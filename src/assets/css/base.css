@@ -1,0 +1,60 @@
+/* 基础样式 */
+input,
+button {
+	outline: none;
+	box-sizing: border-box;
+}
+button {
+	border: none;
+	cursor: pointer;
+}
+/* banner */
+.banner .mint-swipe-indicators {
+	left: initial;
+	right: 1.8rem;
+}
+.banner .mint-swipe-indicator,
+.product-img .mint-swipe-indicator {
+	width: 0.5rem;
+	height: 0.5rem;
+	border: 0.1rem solid #fff;
+	opacity: 1;
+	border-radius: 0.2rem;
+	background: transparent;
+}
+.banner .mint-swipe-indicator.is-active,
+.product-img .mint-swipe-indicator.is-active {
+	background: #e93b3d;
+	border: 0.1rem solid #e93b3d;
+}
+/* banner END */
+
+/* 重写cell样式 */
+.forgetPwd .mint-cell-wrapper,
+.forgetPwd .mint-cell:last-child,
+.pdDetails .mint-cell-wrapper,
+.pdDetails .mint-cell:last-child {
+	background: none;
+}
+.forgetPwd .mint-cell {
+	min-height: 3.8rem;
+	border-radius: 0.3rem;
+	border: 0.1rem solid #a8a8a8;
+}
+.mint-cell-wrapper {
+	font-size: 1.3rem;
+	padding: 0 1.5rem;
+}
+.mint-cell-allow-right::after {
+	width: 0.6rem;
+	height: 0.6rem;
+    border: solid 0.1rem #666;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+/* 重写cell样式 END */
+
+.mint-cell-wrapper {
+    background: none;
+}
+/* 基础样式 END */

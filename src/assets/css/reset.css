@@ -1,0 +1,84 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+html,body { 
+	font-family: "微软雅黑";
+	font-size: 62.5%;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+@media screen and (min-width:320px) and (max-width:359px) and (orientation:portrait) {
+    html,body { font-size: 58.6%; }
+}
+@media screen and (min-width:360px) and (max-width:374px) and (orientation:portrait) {
+    html,body { font-size: 60.3%; }
+}
+@media screen and (min-width:375px) and (max-width:383px) and (orientation:portrait) {
+    html,body { font-size: 62.5%; }
+}
+@media screen and (min-width:384px) and (max-width:399px) and (orientation:portrait) {
+    html,body { font-size: 65.0%; }
+}
+@media screen and (min-width:400px) and (max-width:413px) and (orientation:portrait) {
+    html,body { font-size: 68.1%; }
+}
+@media screen and (min-width:414px) and (max-width:431px) and (orientation:portrait){
+    html,body { font-size: 70.8%; }
+}
+@media screen and (min-width:432px) and (max-width:479px) and (orientation:portrait){
+    html,body { font-size: 74.3%; }
+}
+/*@media screen and (min-width:360px) and (max-width:374px) and (orientation:portrait) {
+    html { font-size: 70.3%; }
+}
+@media screen and (min-width:375px) and (max-width:383px) and (orientation:portrait) {
+    html { font-size: 73.24%; }
+}
+@media screen and (min-width:384px) and (max-width:399px) and (orientation:portrait) {
+    html { font-size: 75.0%; }
+}
+@media screen and (min-width:400px) and (max-width:413px) and (orientation:portrait) {
+    html { font-size: 78.125%; }
+}
+@media screen and (min-width:414px) and (max-width:431px) and (orientation:portrait){
+    html { font-size: 80.86%; }
+}
+@media screen and (min-width:432px) and (max-width:479px) and (orientation:portrait){
+    html { font-size: 84.375%; }
+}*/
+
+/*html,body {font-size:10px}
+@media screen and (min-width:321px) and (max-width:375px){html,body{font-size:10px}}
+@media screen and (min-width:376px) and (max-width:414px){html,body{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html,body{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html,body{font-size:20px}}
+@media screen and (min-width:720px) and (max-width:749px){html,body{font-size:22.5px}}
+@media screen and (min-width:750px) and (max-width:799px){html,body{font-size:23.5px}}
+@media screen and (min-width:800px){html,body{font-size:25px}}*/
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, menu, nav, section { display: block; }
+body { line-height: 1; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* custom */
+a { color: #7e8c8d; text-decoration: none; -webkit-backface-visibility: hidden; }
+li { list-style: none; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track-piece { background-color: rgba(0, 0, 0, 0.2); -webkit-border-radius: 6px; }
+::-webkit-scrollbar-thumb:vertical { height: 5px; background-color: rgba(125, 125, 125, 0.7); -webkit-border-radius: 6px; }
+::-webkit-scrollbar-thumb:horizontal { width: 5px; background-color: rgba(125, 125, 125, 0.7); -webkit-border-radius: 6px; }
+html, body { width: 100%; }
+body { -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
