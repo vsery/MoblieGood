@@ -216,9 +216,9 @@ export default {
 #orderAppraise .order-box .cover { width: 2.5rem; height: 2.5rem; overflow: hidden; border-radius: .25rem; display: inline-block; }
 #orderAppraise .order-box .cover img { width: 100%; min-height: 100%; height: auto; }
 #orderAppraise .order-box .order-name { display: inline-block; width: calc(100% - 2.6rem); float: right; line-height: 1.25rem; padding-left: 1rem; overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-#orderAppraise .appraise-box { background-color: white; height: 18.5rem; width: 100%; position: relative; padding: 1rem; }
-#orderAppraise .appraise-box #appraiseText { position: absolute; z-index: 2; left: 1rem; top: 1rem; right: 1rem; bottom: 9rem; }
-#orderAppraise .appraise-box .number-box { position: absolute; z-index: 2; right: 2rem; top: 2rem; background-color: transparent; font-size: 1rem; color: #999999; }
+#orderAppraise .appraise-box { background-color: white; height: 20.5rem; width: 100%; position: relative; padding: 1rem; }
+#orderAppraise .appraise-box #appraiseText { position: absolute; z-index: 2; left: 1rem; top: 1rem; right: 1rem; bottom: 8rem; }
+#orderAppraise .appraise-box .number-box { position: absolute; z-index: 2; right: 2rem; bottom: 9rem; background-color: transparent; font-size: 1rem; color: #999999; }
 #orderAppraise .appraise-box .buttom-box { position: absolute; z-index: 2; left: 1rem; bottom: 1rem; width: auto; height: auto; border-radius: .5rem; border: 1px dotted #ececec; }
 #orderAppraise .appraise-box .buttom-box .image { width: auto; height: 6rem; display: inline-block; vertical-align: top; }
 #orderAppraise .appraise-box .buttom-box .image .imageUrl { display: inline-block; width: 6rem; height: 6rem; margin-right: 1rem; position: relative; }

@@ -1,7 +1,9 @@
+<!--通知消息-->
 <template>
 	<div id="MessageNotification">
 		<div class="header">
     		<header-bar></header-bar>
+    		<div class="line"></div>
     	</div>
 			<!--Full-->
 			<div class="notification_box" v-for="integral in integrals">
@@ -14,7 +16,7 @@
 							积分变动通知<span>&gt;</span>
 						</h2>
 						<div class="notification_box_content_nav">
-							<p>您的积分账户变更如下：</p>
+							<h4>您的积分账户变更如下：</h4>
 							<p class="change"><i>{{integral.change}}</i>积分：<span>{{integral.number}}</span></p>
 							<p class="remainder">积分余额：<span>{{integral.remainder}}</span></p>
 							<p class="reason">变动原因：<span>{{integral.reason}}</span></p>
@@ -57,11 +59,23 @@
 				display: block;
 				clear: both;
 			}
+			.header{
+				position: relative;
+				margin-bottom: 2.5rem;
+			}
+			.line{
+				height: 2px;
+				width: 37.5rem;
+				background: #ebebeb;
+				position: absolute;
+				left: -1.5rem;
+				bottom: 0;
+			}
 			/*通知消息start*/
 			#MessageNotification{
 				width: 34.5rem;
 				margin: 0 auto;
-				margin-top: 2.6rem;
+				margin-top: 0.1rem;
 			}
 			#MessageNotification .notification_box{
 				height: 23.7rem;
@@ -96,17 +110,27 @@
 			#MessageNotification .notification_box_content a h2{
 				font-size: 1.6rem;
 				color:#333;
-				font-weight: normal;
+				font-weight: bold;
+				padding-bottom: 0.5rem;
 				
 			}
 			#MessageNotification .notification_box_content a h2 span{
+				display: inline-block;
 				float: right;
+				font-size: 1.6rem;
+				color: #333333;
 			}
 			#MessageNotification .notification_box_content_nav{
 				margin-top: 0.7rem;
 				border-top: 0.1rem solid #e5e5e5;
 				color: #666;
 				font-size: 1.4rem;
+				padding-top: 1.2rem;
+			}
+			#MessageNotification .notification_box_content_nav h4{
+				font-size: 1.4rem;
+				font-weight: bold;
+				margin-bottom: 0.8rem;
 			}
 			#MessageNotification .notification_box_content_nav p{
 				padding-top: 0.6rem;

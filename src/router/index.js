@@ -27,10 +27,12 @@ import ProductList from '@/components/class/productList' // 商品列表
 
 
 import My from '@/components/my/view' // 我的 => 视图
-import User from '@/components/my/user' // 我的 => 个人信息
-import UserInfo from '@/components/my/userInfo' // 我的 => 个人信息
-import Setting from '@/components/my/setting' // 我的 => 个人信息
-import Collect from '@/components/my/collect' // 我的 => 个人收藏
+import User from '@/components/my/userIndex' // 我的 => 个人信息
+import UserInfo from '@/components/my/user/userInfo' // 我的 => 个人信息
+import Setting from '@/components/my/user/setting' // 我的 => 个人信息
+import Collect from '@/components/my/collect/collect' // 我的 => 个人收藏
+import MyIntegral from '@/components/my/integral/integral' // 我的 => 个人收藏
+import MyTrace from '@/components/my/trace/trace' // 我的 => 个人收藏
 
 import OrderList from '@/components/my/order/orderList' // 我的 => 订单列表
 import OrderInfo from '@/components/my/order/orderInfo' // 我的 => 订单详情
@@ -105,7 +107,9 @@ let router = new Router({
                 { path: '/user', name: 'MyUser', title: '我的个人中心', component: User },
                 { path: '/userInfo', name: 'MyUserInfo', title: '我的个人信息', component: UserInfo },
                 { path: '/userSetting', name: 'MySetting', title: '我的设置', component: Setting },
-				{ path: '/userCollect', name: 'MyCollect', title: '我的收藏', component: Collect },
+                { path: '/userCollect', name: 'MyCollect', title: '我的收藏', component: Collect },
+                { path: '/userIntegral', name: 'MyIntegral', title: '我的积分', component: MyIntegral },
+				{ path: '/userTrace', name: 'MyTrace', title: '我的足迹', component: MyTrace },
 
                 { path: '/userOrderList', name: 'MyOrderList', title: '我的订单', component: OrderList },
                 { path: '/userOrderInfo', name: 'MyOrderInfo', title: '我的订单详情', component: OrderInfo },

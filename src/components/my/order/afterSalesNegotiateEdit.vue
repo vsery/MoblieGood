@@ -127,9 +127,9 @@ export default {
 <style>
 #afterSalesNegotiate { background-color: #f4f4f4; box-sizing: border-box; width: 100%; padding: .85rem 1.15rem; }
 #afterSalesNegotiate > * { box-sizing: border-box; }
-#afterSalesNegotiate .negotiate-box { background-color: white; height: 18.5rem; width: 100%; position: relative; padding: 1rem; }
-#afterSalesNegotiate .negotiate-box #negotiateText { position: absolute; z-index: 2; left: 1rem; top: 1rem; right: 1rem; bottom: 9rem; }
-#afterSalesNegotiate .negotiate-box .number-box { position: absolute; z-index: 2; right: 2rem; top: 2rem; background-color: transparent; font-size: 1rem; color: #999999; }
+#afterSalesNegotiate .negotiate-box { background-color: white; height: 24rem; width: 100%; position: relative; padding: 1rem; }
+#afterSalesNegotiate .negotiate-box #negotiateText { position: absolute; z-index: 2; left: 1rem; top: 1rem; right: 1rem; bottom: 8rem; border: 1px solid rgba(235,235,235,1); }
+#afterSalesNegotiate .negotiate-box .number-box { position: absolute; z-index: 2; right: 2rem; bottom: 9rem; background-color: transparent; font-size: 1rem; color: #999999; }
 #afterSalesNegotiate .negotiate-box .buttom-box { position: absolute; z-index: 2; left: 1rem; bottom: 1rem; width: auto; height: auto; border-radius: .5rem; border: 1px dotted #ececec; }
 #afterSalesNegotiate .negotiate-box .buttom-box .image { width: auto; height: 6rem; display: inline-block; vertical-align: top; }
 #afterSalesNegotiate .negotiate-box .buttom-box .image .imageUrl { display: inline-block; width: 6rem; height: 6rem; margin-right: 1rem; position: relative; }

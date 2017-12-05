@@ -1,8 +1,10 @@
+<!--消息中心-->
 <template>
 	<div id="MessageCenter" class="clearfix">
 		<div class="header">
     		<header-bar></header-bar>
-    	</div>
+    		<div class="line"></div>
+    </div>
 			<!--商城活动-->
 			<router-link :to="{ name: 'ShopSales'}">
 				<div class="message_box">
@@ -92,6 +94,17 @@ export default {
 				display: block;
 				clear: both;
 			}
+			.header{
+				position: relative;
+			}
+			.line{
+				height: 2px;
+				width: 37.5rem;
+				background: #ebebeb;
+				position: absolute;
+				left: -1.5rem;
+				bottom: 0;
+			}
 			/*消息中心start*/
 			#MessageCenter {
 				width: 34.5rem;
@@ -151,7 +164,6 @@ export default {
 			
 			#MessageCenter .message_box_content span {
 				font-size: 1.2rem;
-				padding-right: 2rem;
 				float: right;
 				height: 2rem;
 				line-height: 2rem;

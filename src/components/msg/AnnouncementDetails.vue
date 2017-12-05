@@ -1,7 +1,9 @@
+<!--商城公告-详情-->
 <template>
 	<div id="AnnouncementDetails">
 		<div class="header">
     		<header-bar></header-bar>
+    		<div class="line"></div>
     	</div>
 			<div class="details_box">
 					<h3>商城公告标题商城公告标题</h3>
@@ -30,11 +32,23 @@
 				display: block;
 				clear: both;
 			}
+			.header{
+				position: relative;
+				margin-bottom: 2.5rem;
+			}
+			.line{
+				height: 2px;
+				width: 37.5rem;
+				background: #ebebeb;
+				position: absolute;
+				left: -1.5rem;
+				bottom: 0;
+			}
 			/*商城公告-详情start*/
 			#AnnouncementDetails{
 				width: 34.5rem;
 				margin: 0 auto;
-				margin-top: 2.6rem;
+				margin-top: 0.1rem;
 			}
 			#AnnouncementDetails .details_box h3{
 				font-size: 1.6rem;

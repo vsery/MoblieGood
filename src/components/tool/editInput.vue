@@ -70,6 +70,6 @@ export default {
 </script>
 
 <style scoped>
-.edit-div { border: 1px solid rgba(235,235,235,1); padding: .5rem 1rem; border-radius: .5rem; overflow-y: auto; color: #b2b2b2; font-size: 1.2rem; line-height: 1.6rem; box-sizing: border-box; /*padding-right: 60px;*/ }
+.edit-div { padding: .5rem 1rem; border-radius: .5rem; overflow-y: auto; color: #b2b2b2; font-size: 1.2rem; line-height: 1.6rem; box-sizing: border-box;}
 .edit-div:focus { border: 1px dotted blue; background-color: rgba(255,255,255,.7); color: rgba(0,0,0,.7); outline: none; }
 </style>

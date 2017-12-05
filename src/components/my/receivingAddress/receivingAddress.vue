@@ -6,7 +6,7 @@
   	<div class="content">
   		<div class="address-list" v-if="addressList.length != 0">
   			<div class="address-hd"></div>
-  			<div class="address-item-ct clearfix" v-for="item in addressList" is-link>
+  			<div class="address-item-ct clearfix" v-for="item in addressList">
   				<div class="item-name">
   					<div class="name">{{ item.name }}</div>
   					<div class="active-icon" v-if="item.state == 0">
@@ -32,13 +32,13 @@
 	  			<div class="text">您暂未添加收货地址</div>
   			</div>
   			<div class="btn-box">
-  				<div class="u-btn btn-left" is-link>微信添加</div>
-  				<div class="u-btn btn-right" is-link @click="link_addAddress"><i class="iconfont "></i>新建地址</div>
+  				<div class="u-btn btn-left">微信添加</div>
+  				<div class="u-btn btn-right" @click="link_addAddress"><i class="iconfont "></i>新建地址</div>
   			</div>
   		</div>
   		<div class="btn-box">
-				<div class="u-btn btn-left" is-link>微信添加</div>
-				<div class="u-btn btn-right" is-link @click="link_addAddress"><i class="iconfont "></i>新建地址</div>
+				<div class="u-btn btn-left">微信添加</div>
+				<div class="u-btn btn-right" @click="link_addAddress"><i class="iconfont "></i>新建地址</div>
 			</div>
   	</div>
   </div>
@@ -78,44 +78,51 @@ export default {
 	
 }
 .address-list .address-hd {
+	width: 100%;
+	background-image: url(../../../assets/img/addressHd.jpg);
 	height: 0.5rem;
-	background: url(../../../assets/img/addressHd.jpg) repeat-x center;
+	background-size: 100% calc(100% + 0.1rem);
+	border-top: 0.1rem solid #fbfbfb;
 }
 .address-list .address-item-ct {
 	box-sizing: border-box;
-	min-height: 5.5rem;
-	height: 5.5rem;
+	height: 6.5rem;
 	width: 100%;
-	padding: 0 1.5rem;
+	padding: 1.3rem 1.25rem;
 	border-bottom:0.1rem solid #ddd;
 	overflow: hidden;
-	line-height: 2.4rem;
-	padding-top: 0.6rem;
 }
 .address-item-ct .item-name {
 	float: left;
 	width: 25%;
+	font-size: 1.38rem;
+	line-height: 1.9rem;
 }
-.address-item-ct .item-name .name {
-	font-size: 1.6rem;
+.address-item-ct .item-name .active-icon {
+	line-height: 2rem;
 }
 .address-item-ct .item-name .active-icon span {
-	font-size: 1.3rem;
+	display: inline-block;
+	font-size: 1.1rem;
+	line-height: 1.4rem;
 	border:1px solid #d4282d;
 	color: #d4282d;
-	padding: 0 0.5rem 0.1rem;
+	padding: 0.25rem;
 	border-radius: 0.4rem;
+	vertical-align: middle;
 }
 .address-item-ct .item-address {
 	float: left;
 	width: 60%;
 }
 .address-item-ct .item-address .user-phone {
-	font-size: 1.6rem;
+	font-size: 1.38rem;
+	line-height: 1.9rem;
 }
 .address-item-ct .item-address .address-detailed {
-	font-size: 1.3rem;
+	font-size: 1.1rem;
 	color: #999;
+	line-height: 2.5rem;
 }
 .address-item-ct .item-edit {
 	float: left;
@@ -124,7 +131,7 @@ export default {
 	text-align: right;
 }
 .address-item-ct .item-edit i {
-	font-size: 2.5rem;
+	font-size: 1.8rem;
 }
 /* address-list end */
 /* NoAddress */
@@ -138,7 +145,6 @@ export default {
 }
 .noAddress .img-wrap img {
 	width: 100%;
-	/*height: 100%;*/
 }
 .noAddress .text {
 	margin-top: 1.5rem;
@@ -155,7 +161,7 @@ export default {
 .receivingAddress .content .btn-box .u-btn {
 	float: left;
 	display: inline-block;
-	width: calc((100% - 1.4rem)/2);
+	width: calc((100% - 1.5rem)/2);
 	height: 3.4rem;
 	line-height:3.4rem;
 	background-color: #fff;

@@ -69,8 +69,12 @@
 	.query-box .query {
 		float: left;
 	}
-	.query-box .query,.query-box .query input {
-		width: 28rem;
+	.query-box .query i {
+		color:#999;
+	}
+	.query-box .query,
+	.query-box .query input {
+		width: 90%;
 		height: 3rem;
 		line-height: 3rem;
 		background-color: #ededed;
@@ -81,17 +85,16 @@
 	}
 	.query-box .query input {
 		box-sizing: border-box;
-		width: 23.8rem;
+		width: 85%;
 		text-align: left;
+		/*line-height: 2rem;*/
 		border-color: #ededed;
 		vertical-align: top;
 	}
 	.query-box button {
-		float: left;
+		float: right;
 		font-size: 1.2875rem;
-		width: 2.5rem;
 		height: 3rem;
-		margin-left: 1rem;
 		background-color: #fff;
 	}
 	.content .ct-bd {

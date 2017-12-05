@@ -8,7 +8,7 @@
 				<input type="text" name="userPhone" id="userPhone" :value="inpValues.phone" @change="changePhone" placeholder="手机号" />
 			</div>
 			<div class="inp-item">
-				<div class="disabled-address " :class="[once?'active':'']" is-link @click="setAddress">{{ inpValues.state }}</div>
+				<div class="disabled-address " :class="[once?'active':'']"  @click="setAddress">{{ inpValues.state }}</div>
 			</div>
 			<div class="inp-item">
 				<input type="text" name="address-detailed" id="userName" :value="inpValues.detailAddress" @change="changeDetailAddress" placeholder="详细地址，如楼道、楼牌号等" />
@@ -17,12 +17,12 @@
 				<i :class="['iconfont icon-icon-check ']+[radioBtn?'active':'']"></i>设为默认地址
 			</div>
 			<div class="btn-box">
-				<div class="u-btn btn-left" is-link @click="close">取消</div>
-				<div class="u-btn btn-right" is-link @click="dataSubmit">保存</div>
+				<div class="u-btn btn-left" @click="close">取消</div>
+				<div class="u-btn btn-right" @click="dataSubmit">保存</div>
 			</div>
 		</div>
 		<mt-popup v-model="popupVisible" position="bottom">
-			<div class="btn-ok"><span is-link @click="btnOk">完成</span></div>
+			<div class="btn-ok"><span @click="btnOk">完成</span></div>
 			<mt-picker v-if="popupVisible" :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
 		</mt-popup>
 	</div>
@@ -202,10 +202,11 @@
 		width: 100%;
 		border: 0;
 		line-height: 4rem;
+		font-size: 1.3rem;
 	}
 	
 	.addAddress .content .inp-item .disabled-address {
-		color: #757575;
+		color: #999;
 	}
 	
 	.addAddress .content .inp-item .disabled-address.active {

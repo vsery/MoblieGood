@@ -239,7 +239,7 @@ export default {
 #afterSales .from-box .item .val span.active { color: #ff4242; font-size: 1.2rem; vertical-align: top; margin-left: .5rem; }
 #afterSales .from-box .item .val span.help { float: right; font-size: 1rem; vertical-align: bottom; color: #999999; }
 #afterSales .from-box .item .val.info { height: 10rem; margin-left: 0; width: 100%; display: block; position: relative; }
-#afterSales .from-box .item .val.info textarea.instruction { width: 100%; height: calc(100% - 1rem); resize: none; padding: .1rem 0; font-size: 1.2rem; color: #999999; border: none;}
+#afterSales .from-box .item .val.info textarea.instruction { width: 100%; height: calc(100% - 1rem); resize: none; padding: .1rem 0; font-size: 1.2rem; color: #999999; border: none; }
 #afterSales .from-box .item.image { height: auto; padding-bottom: 1rem; }
 #afterSales .from-box .item.image label { width: 100%; }
 #afterSales .from-box .item.image label:before { content: ''; }

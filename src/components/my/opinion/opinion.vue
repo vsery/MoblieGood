@@ -1,12 +1,12 @@
 <template>
 	<div id="opinion">
 		<div class="content">
-			<div class="ct-hd">
-				<p>精益求精</p>
-				<p>只为您提供更好的品质购物</p>
-				<!--<div class="img-box">
-					<img src="img/bg_msg.png"/>
-				</div>-->
+			<div class="ct-hd clearfix">
+				<div class="u-fl">
+					<p>精益求精</p>
+					<p>只为您提供更好的品质购物</p>
+				</div>
+				<div class="img-box"></div>
 			</div>
 			<div class="ct-bd">
 				<div class="bd-tit">反馈问题类型</div>
@@ -48,10 +48,10 @@
 					<textarea name="opinion" placeholder="选择问题类型帮助我们更快处理您的反馈" v-model="textarea" @input="textNum" maxlength="500"></textarea>
 					<span>{{ textLength }}/500</span>
 				</div>
-				<div class="img-upload clearfix">
-					<ul>
+				<div class="img-upload">
+					<ul class="clearfix">
 						<li v-for="(item,index) in imgArr" v-if="imgArr[index]">
-							<img :src="item.imgUrl"/>
+							<img :src="item.imgUrl" />
 							<div class="u-del" @click="liRemove(index)">一</div>
 						</li>
 						<li class="add-upload" @click="openAction">
@@ -63,6 +63,16 @@
 				<button class="u-submit">提交</button>
 			</div>
 			<mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
+			<el-upload
+			  action="https://jsonplaceholder.typicode.com/posts/"
+			  list-type="picture-card"
+			  :on-preview="handlePictureCardPreview"
+			  :on-remove="handleRemove">
+			  <i class="el-icon-plus"></i>
+			</el-upload>
+			<el-dialog :visible.sync="dialogVisible" size="tiny">
+			  <img width="100%" :src="dialogImageUrl" alt="">
+			</el-dialog>
 		</div>
 	</div>
 </template>
@@ -73,46 +83,73 @@
 		name: 'opinion',
 		data() {
 			return {
-				sheetVisible:false,
-				actions: [
-	                { name: '拍照', method: this.getCamera },
-	                { name: '从相册中选择', method: this.getLibrary },
-	            ],
-	            opinionType:[
-	            	{ name:'功能异常'},
-	            	{ name:'体验问题'},
-	            	{ name:'新功能建议'},
-	            	{ name:'其他'},
-	            ],
-	            curId:0,
-	            textarea: '',
-	            textLength: 0,
-	            imgArr:[
-	            	{ imgUrl:'../../../../static/img/header (1).jpg' },
-	            	{ imgUrl:'../../../../static/img/header (2).jpg' },
-	            	{ imgUrl:'../../../../static/img/header (3).jpg' },
-	            ]
+				sheetVisible: false,
+				actions: [{
+						name: '拍照',
+						method: this.getCamera
+					},
+					{
+						name: '从相册中选择',
+						method: this.getLibrary
+					},
+				],
+				opinionType: [{
+						name: '功能异常'
+					},
+					{
+						name: '体验问题'
+					},
+					{
+						name: '新功能建议'
+					},
+					{
+						name: '其他'
+					}
+				],
+				curId: 0,
+				textarea: '',
+				textLength: 0,
+				imgArr: [{
+						imgUrl: '../../../../static/img/header (1).jpg'
+					},
+					{
+						imgUrl: '../../../../static/img/header (2).jpg'
+					},
+					{
+						imgUrl: '../../../../static/img/header (3).jpg'
+					},
+				],
+				dialogImageUrl: '',
+				dialogVisible: false
 			}
 		},
 		mounted() {
 			document.title = '意见反馈';
 		},
 		methods: {
-			openAction(){
+			openAction() {
 				this.sheetVisible = true;
 			},
-			getCamera(){
+			getCamera() {
 				console.log('打开照相机');
 			},
-			getLibrary(){
+			getLibrary() {
 				console.log('从相册中选择');
 			},
-			textNum(){
+			textNum() {
 				this.textLength = this.textarea.length;
 			},
-			liRemove(index){
+			liRemove(index) {
 				console.log(index);
-	            this.imgArr.splice(index, 1);  
+				this.imgArr.splice(index, 1);
+			},
+			handleRemove(file, fileList) {
+				console.log(file, fileList);
+			},
+			handlePictureCardPreview(file) {
+				console.log(file);
+				this.dialogImageUrl = file.url;
+				this.dialogVisible = true;
 			}
 		}
 	}
@@ -131,16 +168,17 @@
 	
 	.content .ct-hd {
 		height: 8.75rem;
-		background: url(img/bg_msg.png) no-repeat;
-		background-position: 22.92rem 2.16rem;
-		/*background-size: 50% 50%;*/
 		background-color: #ff4c42;
 		padding: 2rem 0 2rem 2.6rem;
 	}
 	
 	.content .ct-hd .img-box {
+		float: right;
+		margin-right: 2rem;
 		width: 9.8rem;
 		height: 4.5rem;
+		background: url(img/bg_msg.png) no-repeat;
+		background-size: contain;
 	}
 	
 	.content .ct-hd .img-box img {
@@ -152,7 +190,6 @@
 		font-size: 1.5rem;
 		line-height: 2.575rem;
 		color: #fff;
-		/*text-align: right;*/
 	}
 	
 	.content .ct-bd {
@@ -174,13 +211,13 @@
 		position: relative;
 		box-sizing: border-box;
 		float: left;
-		width: 7.4rem;
+		width: 23.5%;
 		height: 2.83rem;
 		line-height: 2.83rem;
 		border: 0.1rem solid #e4e4e4;
 		text-align: center;
 		font-size: 1.195rem;
-		margin-right: 0.73rem;
+		margin-right: 2%;
 		border-radius: 0.33rem;
 		margin-bottom: 0.83rem;
 	}
@@ -204,7 +241,6 @@
 		width: 1.5rem;
 		height: 1.5rem;
 		overflow: hidden;
-		/*border-radius: .33rem 0 0 0;*/
 		z-index: 99;
 	}
 	
@@ -226,7 +262,6 @@
 	
 	.ct-bd .textarea-box {
 		position: relative;
-		/*width: 31.8rem;*/
 		width: 100%;
 		height: 14.8rem;
 		margin: 0 auto;
@@ -252,9 +287,11 @@
 		background-color: #fff;
 		font-size: 1rem;
 	}
+	
 	.ct-bd .img-upload ul {
 		margin-top: 1.5rem;
 	}
+	
 	.ct-bd .img-upload ul li {
 		position: relative;
 		float: left;
@@ -265,9 +302,11 @@
 		margin-bottom: 1.6rem;
 		text-align: center;
 	}
+	
 	.ct-bd .img-upload ul li:last-child {
 		margin-right: 0;
 	}
+	
 	.ct-bd .img-upload ul li img {
 		box-sizing: border-box;
 		width: 100%;
@@ -275,6 +314,7 @@
 		border: 0.1rem solid #E8E8E8;
 		border-radius: 0.5rem;
 	}
+	
 	.ct-bd .img-upload ul li .u-del {
 		position: absolute;
 		top: -0.8rem;
@@ -288,20 +328,24 @@
 		border-radius: 50%;
 		z-index: 99;
 	}
+	
 	.ct-bd .img-upload ul li.add-upload {
 		box-sizing: border-box;
 		border: 0.1rem dashed #e8e8e8;
 		padding: 1.42rem 0;
 		color: #999;
 	}
+	
 	.add-upload .iconBox i {
 		line-height: 2.5rem;
 		font-size: 3rem;
 	}
+	
 	.add-upload p {
 		line-height: 1.6rem;
 		font-size: 1.1rem;
 	}
+	
 	.ct-bd .u-submit {
 		width: 100%;
 		height: 4.16rem;
@@ -312,8 +356,8 @@
 		background-color: #b3b3b3;
 		border-radius: 0.5rem;
 	}
+	
 	.ct-bd .u-submit.active {
 		background-color: #ff4342;
 	}
-	
 </style>

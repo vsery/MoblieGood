@@ -1,7 +1,9 @@
+<!--商城活动-->
 <template>
 	<div id="ShopSales">
 		<div class="header">
     		<header-bar></header-bar>
+    		<div class="line"></div>
     	</div>
 			<!--Full-->
 			<div class="sales_box" v-for="shop in shops">
@@ -52,11 +54,23 @@
 				display: block;
 				clear: both;
 			}
+			.header{
+				position: relative;
+				margin-bottom: 1.1rem;
+			}
+			.line{
+				height: 2px;
+				width: 37.5rem;
+				background: #ebebeb;
+				position: absolute;
+				left: -1.5rem;
+				bottom: 0;
+			}
 			/*商城活动start*/
 			#ShopSales{
 				width: 34.5rem;
 				margin: 0 auto;
-				margin-top: 1.2rem;
+				margin-top: 0.1rem;
 			}
 			#ShopSales .sales_box{
 				height: 22.2rem;

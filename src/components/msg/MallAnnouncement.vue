@@ -1,7 +1,9 @@
+<!--商城公告-->
 <template>
 	<div id="MallAnnouncement">
 		<div class="header">
     		<header-bar></header-bar>
+    		<div class="line"></div>
     	</div>
 			<!--Full-->
 			<div class="announcement_box">
@@ -77,11 +79,23 @@
 				display: block;
 				clear: both;
 			}
+			.header{
+				position: relative;
+				margin-bottom: 2.5rem;
+			}
+			.line{
+				height: 2px;
+				width: 37.5rem;
+				background: #ebebeb;
+				position: absolute;
+				left: -1.5rem;
+				bottom: 0;
+			}
 			/*商城公告start*/
 			#MallAnnouncement{
 				width: 34.5rem;
 				margin: 0 auto;
-				margin-top: 2.6rem;
+				margin-top: 0.1rem;
 			}
 			#MallAnnouncement .announcement_box{
 				height: 19rem;
@@ -126,11 +140,14 @@
 				border-top: 1px solid #e5e5e5;
 				color: #666;
 				font-size: 1.4rem;
-				height: 4.4rem;
-				padding-top: 1rem;	
+				height: 3rem;
+				padding-top: 1.6rem;	
 			}
 			#MallAnnouncement .announcement_box_content_nav p{
-				height: 3.8rem;
+				color: #666;
+				font-size: 1.4rem;
+				height: 3rem;
+				line-height: 1.6rem;
 				/*文字溢出*/
 				display: -webkit-box;
 -webkit-box-orient: vertical;

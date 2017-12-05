@@ -2,65 +2,383 @@
     DOM 结构
 -->
 <template>
-    <div class="shoppingCart">        
-        <div class="header">
+    <div class="shoppingCart" :style="{height: BH}">
+        <div class="headerBg">
             <header-bar :isWhite="false"></header-bar>
         </div>
+        <template v-if="goodList.length > 0">
+            <div class="menu">
+                <a href="javascript:;" @click="switchState" class="btn right">{{edit?'完成':'编辑'}}</a>
+            </div>
+            <div class="shopping-conentBox">
+                <div class="goodList">
+                    <ul class="itemList">
+                        <li class="item" v-for="good,index in goodList" v-if="good.state" :key="index">
+                            <div class="content" ref="content" @touchstart='touchStart' @touchmove='touchMove' @touchend='touchEnd'>
+                                <div class="sys">
+                                    <input type="checkbox" name="vehicle" :value="good.check" @click="selectCheck(good)">
+                                </div>
+                                <div class="good">
+                                    <div class="cover"><img :src="good.cover" class="response-img" alt=""></div>
+                                    <div class="info-box">
+                                        <div class="info">
+                                            <span class="name">{{good.name}}</span>
+                                            <span class="number">X{{good.number}}</span>
+                                            <p class="desc">{{good.desc}}</p>
+                                        </div>
+                                        <div class="set">
+                                            <span class="price">￥{{good.price}}</span>
+                                            <div class="number-box">
+                                                <span :class="['cut ']+[good.number==1?'disable':'']" @click="cutGood(good)">-</span>
+                                                <span class="val" @click="inputGood(good)">{{good.number}}</span>
+                                                <span class="add" @click="addGood(good)">+</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="remove" ref='remove' @click="deleteGood(good)">
+                                <i class="icon iconfont icon-shanchu"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lose goodList" v-if="loseList.length>0">
+                    <ul class="itemList">
+                        <li class="title">
+                            <span>失效宝贝{{loseList.length}}件</span>
+                            <a class="close" @click="clearLose" href="javascript:;">清楚失效宝贝</a>
+                        </li>
+                        <li class="item" v-for="lose,index in loseList" :key="index">
+                            <div class="content" ref="content" @touchstart='touchStart' @touchmove='touchMove' @touchend='touchEnd'>
+                                <div class="sys"><span class="key">失效</span></div>
+                                <div class="good">
+                                    <div class="cover"><img :src="lose.cover" class="response-img" alt=""></div>
+                                    <div class="info-box">
+                                        <div class="info">
+                                            <span class="name">{{lose.name}}</span>
+                                            <span class="number">X{{lose.number}}</span>
+                                            <p class="desc">{{lose.desc}}</p>
+                                        </div>
+                                        <div class="set">
+                                            <span class="price">￥{{lose.price}}</span>
+                                            <div class="number-box">
+                                                <span :class="['cut ']+[lose.number==1?'disable':'']" @click="cutGood(lose)">-</span>
+                                                <span class="val" @click="inputGood(lose)">{{lose.number}}</span>
+                                                <span class="add" @click="addGood(lose)">+</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="remove" ref='remove' @click="deleteGood(lose)">
+                                <i class="icon iconfont icon-shanchu"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shopping-btnBox">
+                <div class="sys">
+                    <div class="help-text">
+                        <input type="radio" name="">已选<span class="help-number">1</span></div>
+                </div>
+                <div class="price">
+                    <div class="help-text">应付:￥<span class="help-price"><span class="val">{{onPrice.toFixed(2)}}</span></span>
+                    </div>
+                </div>
+                <div :class="['btn '] +[!orderState?'disable':'']"><a href="javascript:;" @click='action' class="order-btn">{{edit?'删除':'下单'}}</a></div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="error-box">
+                <div class="error-icon">
+                    <img :src="'./static/img/shoping.png'" alt="">
+                </div>
+                <div class="error-help">
+                    这里有全球一万件好货
+                </div>
+            </div>
+        </template>
     </div>
 </template>
 <script>
 import headerBar from '@/components/header/headerBar'
 export default {
-    name: 'shoppingCart', // 结构名称
     components: {
         'header-bar': headerBar
     },
+    name: 'shoppingCart',
     data() {
         return {
-            // 数据模型
+            selectIndex: null,
+            BH: document.documentElement.clientHeight + 'px',
+            startX: 0, //触摸位置
+            endX: 0, //结束位置
+            moveX: 0, //滑动时的位置
+            disX: 0, //移动距离
+            deleteSlider: '', //滑动时的效果,使用v-bind:style="deleteSlider"
+            edit: false,
+            orderState: false,
+            goodList: [
+                { id: 1, check: false, cover: './static/img/good.jpg', name: '男士纯棉收口圆领T恤男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 79.88, number: 1, state: true },
+                { id: 2, check: false, cover: './static/img/good1.jpg', name: '男士纯棉收口圆领T恤', desc: '深灰; 1.5M (床尺寸)', price: 279.88, number: 1, state: true },
+                { id: 3, check: false, cover: './static/img/good2.jpg', name: '男士纯棉收口圆领T恤', desc: '深灰; 1.5M (床尺寸), 蓝灰; M (175~180), 深灰; 1.5M (床尺寸)', price: 179.88, number: 1, state: true },
+                { id: 4, check: false, cover: './static/img/good3.jpg', name: '男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 169.88, number: 1, state: true },
+                { id: 5, check: false, cover: './static/img/good4.jpg', name: '男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 159.88, number: 1, state: true },
+                { id: 6, check: false, cover: './static/img/good1.jpg', name: '男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 159.88, number: 1, state: false },
+                { id: 7, check: false, cover: './static/img/good2.jpg', name: '男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 169.88, number: 1, state: false },
+                { id: 8, check: false, cover: './static/img/good3.jpg', name: '男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 179.88, number: 1, state: false },
+                { id: 9, check: false, cover: './static/img/good4.jpg', name: '男士纯棉收口圆领T恤', desc: '深灰; 1.5M (床尺寸)', price: 279.88, number: 1, state: false },
+                { id: 10, check: false, cover: './static/img/good.jpg', name: '男士纯棉收口圆领T恤', desc: '蓝灰; M (175~180)', price: 79.88, number: 1, state: false }
+            ],
+            loseList: [],
+            orderList: [],
+            onPrice: 0.00,
         }
     },
     watch: {
-        // 监控集合
+        orderList: function(val, oldVal) {
+            if (val.length > 0) {
+                this.orderState = true;
+            } else {
+                this.orderState = false;
+            }
+        }
     },
-    props: {
-        // 集成父级参数
-    },
-    beforeCreate() {
-        // console.group('创建前状态  ===============》beforeCreate');
-    },
-    created() {
-        // console.group('创建完毕状态===============》created');
-    },
-    beforeMount() {
-        // console.group('挂载前状态  ===============》beforeMount');
-    },
+    props: {},
+    beforeCreate() {},
+    created() {},
+    beforeMount() {},
     mounted() {
-        // console.group('挂载结束状态===============》mounted');
-        this.$nextTick(function() {
-            // console.log('执行完后，执行===============》mounted');
-        });
+        this.getData();
+        // this.goodList = [];
+        this.$nextTick(function() {});
     },
-    beforeUpdate() {
-        // console.group('更新前状态  ===============》beforeUpdate');
-    },
-    updated() {
-        // console.group('更新完成状态===============》updated');
-    },
-    beforeDestroy() {
-        // console.group('销毁前状态  ===============》beforeDestroy');
-    },
-    destroyed() {
-        // console.group('销毁完成状态===============》destroyed');
-    },
+    beforeUpdate() {},
+    updated() {},
+    beforeDestroy() {},
+    destroyed() {},
     methods: {
-        // 方法 集合
+        touchStart(ev) {
+            ev = ev || event
+            //tounches类数组，等于1时表示此时有只有一只手指在触摸屏幕
+            if (ev.touches.length == 1) {
+                // 记录开始位置
+                this.startX = ev.touches[0].clientX;
+            }
+        },
+        touchMove(ev) {
+            ev = ev || event;
+            var el = ev.currentTarget;
+            //获取删除按钮的宽度，此宽度为滑块左滑的最大距离
+            let wd = this.$refs.remove[0].offsetWidth || this.$refs.remove[0].scrollWidth;
+            if (ev.touches.length == 1) {
+                // 滑动时距离浏览器左侧实时距离
+                this.moveX = ev.touches[0].clientX
+                //起始位置减去 实时的滑动的距离，得到手指实时偏移距离
+                this.disX = this.startX - this.moveX;
+                // console.log(this.disX)
+                // 如果是向右滑动或者不滑动，不改变滑块的位置
+                if (this.disX < 0 || this.disX == 0) {
+                    this.deleteSlider = "transform:translateX(0px)";
+                    el.style = this.deleteSlider;
+                    // 大于0，表示左滑了，此时滑块开始滑动 
+                } else if (this.disX > 0) {
+                    //具体滑动距离我取的是 手指偏移距离*5。
+                    this.deleteSlider = "transform:translateX(-" + this.disX * 5 + "px)";
+                    el.style = this.deleteSlider;
+                    // 最大也只能等于删除按钮宽度 
+                    if (this.disX * 5 >= wd) {
+                        this.deleteSlider = "transform:translateX(-" + wd + "px)";
+                        el.style = this.deleteSlider;
+                    }
+                }
+            }
+        },
+        touchEnd(ev) {
+            ev = ev || event;
+            var el = ev.currentTarget;
+            let wd = this.$refs.remove.offsetWidth || this.$refs.remove[0].scrollWidth;
+            if (ev.changedTouches.length == 1) {
+                let endX = ev.changedTouches[0].clientX;
+                this.disX = this.startX - endX;
+                // console.log(this.disX)
+                //如果距离小于删除按钮一半,强行回到起点
+                if ((this.disX * 5) < (wd / 2)) {
+                    this.deleteSlider = "transform:translateX(0px)";
+                    el.style = this.deleteSlider;
+                } else {
+                    //大于一半 滑动到最大值
+                    this.deleteSlider = "transform:translateX(-" + wd + "px)";
+                    el.style = this.deleteSlider;
+                }
+            }
+        },
+        /**
+         * 获取数据
+         * @return {[type]} [description]
+         */
+        getData() {
+            var arr = [];
+            for (var i = 0; i < this.goodList.length; i++) {
+                if (this.goodList[i].state) {
+                    arr.push(this.goodList[i]);
+                } else {
+                    this.loseList.push(this.goodList[i]);
+                }
+            }
+            this.goodList = arr;
+        },
+        /**
+         * 商品-1;
+         * @param  {[type]} _good [description]
+         * @return {[type]}       [description]
+         */
+        cutGood(_good) {
+            if (_good.number > 1) {
+                _good.number--;
+                this.payMoney();
+            }
+        },
+        inputGood(_good) {},
+        /**
+         * 商品+1
+         * @param {[type]} _good [description]
+         */
+        addGood(_good) {
+            _good.number++;
+            this.payMoney();
+        },
+        deleteGood(_good, ev) {
+            ev = ev || event;
+            var el = ev.currentTarget;
+            el.parentNode.firstChild.style = "transform:translateX(0px)";
+            for (var i = 0; i < this.goodList.length; i++) {
+                if (this.goodList[i].id == _good.id) {
+                    this.goodList.splice(i, 1);
+                }
+            }
+            for (var i = 0; i < this.loseList.length; i++) {
+                if (this.loseList[i].id == _good.id) {
+                    this.loseList.splice(i, 1);
+                }
+            }
+        },
+        /**
+         * 切换状态
+         * @return {[type]} [description]
+         */
+        switchState() {
+            (this.edit ? this.edit = false : this.edit = true);
+        },
+        /**
+         * 清空失效宝贝
+         * @return {[type]} [description]
+         */
+        clearLose() {
+            this.loseList = [];
+            console.log('清空失效宝贝');
+        },
+        /**
+         * 需要支付商品
+         * @param  {[type]} _good [description]
+         * @return {[type]}       [description]
+         */
+        selectCheck(_good) {
+            _good.check = !_good.check;
+            if (_good.check) {
+                this.orderList.push(_good);
+            } else {
+                for (var i = 0; i < this.orderList.length; i++) {
+                    if (this.orderList[i].id == _good.id) {
+                        this.orderList.splice(i, 1);
+                    }
+                }
+            }
+            this.payMoney();
+        },
+        /**
+         * 支付金额
+         * @return {[type]} [description]
+         */
+        payMoney() {
+            this.onPrice = 0;
+            for (var i = 0; i < this.orderList.length; i++) {
+                this.onPrice = this.onPrice + this.orderList[i].price * this.orderList[i].number;
+            }
+        },
+        /**
+         * 下单 / 删除宝贝
+         * @return {[type]} [description]
+         */
+        action() {
+            console.log(this.orderList);
+            if (this.edit) {
+                console.log('删除成功');
+            } else {
+                console.log('下单成功');
+            }
+        }
     }
 
 }
 
 </script>
-<!-- 增加 "scoped" 属性 限制 CSS 属于当前部分 -->
-<style scoped>
 
+<style scoped>
+.shoppingCart { background-color: #f4f4f4; }
+.shoppingCart > * { box-sizing: border-box; }
+.shoppingCart .menu { position: fixed; width: 100%; height: 3rem; line-height: 3.2rem; padding: 0 1rem; box-sizing: border-box; border-top: 1px solid #f5f5f5; background-color: white; }
+.shoppingCart .shopping-conentBox { position: fixed; top: 6.7rem; right: 0; bottom: 4.5rem; left: 0; overflow-y: scroll; padding-bottom: 1rem; }
+.shoppingCart .shopping-btnBox { position: fixed; width: 100%; bottom: 0; height: 4.5rem; line-height: 4.5rem; background-color: white; box-sizing: border-box; }
+.shoppingCart .shopping-btnBox:after { content: ''; clear: both; display: block; }
+.shoppingCart .shopping-btnBox .sys { padding-left: 1.5rem; display: inline-block; width: calc(100% - 24rem); box-sizing: border-box; float: left; text-align: left; }
+.shoppingCart .shopping-btnBox .sys input { width: 1.5rem; height: 1.5rem; display: inline-block; vertical-align: middle; }
+.shoppingCart .shopping-btnBox .sys .help-number:before { content: '('; display: inline-block; margin-left: .5rem; }
+.shoppingCart .shopping-btnBox .sys .help-number:after { content: ')'; display: inline-block; }
+.shoppingCart .shopping-btnBox .price { display: inline-block; width: 12rem; text-align: right; box-sizing: border-box; padding-right: 1rem; float: left; }
+.shoppingCart .shopping-btnBox .price .help-text { color: #ff4342; font-size: 1.4rem; }
+.shoppingCart .shopping-btnBox .btn { display: inline-block; background-color: #ff4342; width: 12rem; text-align: center; float: right; }
+.shoppingCart .shopping-btnBox .btn a.order-btn { color: white; font-size: 1.4rem; }
+.shoppingCart .shopping-btnBox .btn.disable { background-color: #cccccc; }
+.shoppingCart .menu a.btn { display: block; color: #242424; font-size: 1.2875rem; }
+.shoppingCart .menu a.btn.right { float: right; }
+.shoppingCart .goodList .item { background-color: white; height: 10rem; margin-bottom: 1rem; position: relative; user-select: none; }
+.shoppingCart .goodList .item .content { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 100; transition: 0.3s; overflow: hidden; padding: 1.5rem; box-sizing: border-box; background-color: white; }
+.shoppingCart .goodList .item .remove { position: absolute; width: 6.5rem; height: 10rem; overflow: hidden; background-color: #ff4342; right: 0; top: 0; color: #fff; text-align: center; font-size: 2rem; line-height: 10rem; }
+.shoppingCart .goodList .item .remove i.icon { font-size: 1.67rem;  }
+.shoppingCart .goodList.lose .title { height: 4.2rem; line-height: 4.2rem; padding: 0 1.5rem; box-sizing: border-box; background-color: white; position: relative; }
+.shoppingCart .goodList.lose .title:after { content: ''; display: block; width: calc(100% - 3rem); height: 1px; background-color: #f7f7f7; position: absolute; left: 1.5rem; bottom: 0; }
+.shoppingCart .goodList.lose .title span { color: #333333; font-size: 1.2rem; }
+.shoppingCart .goodList.lose .title a.close { float: right; color: #ff4342; font-size: 1.2rem; }
+.shoppingCart .goodList.lose .item { padding-left: .5rem; margin-bottom: 1px; }
+.shoppingCart .goodList .item:after { content: ''; clear: both; display: block; }
+.shoppingCart .goodList.lose .item .sys { width: 3rem; text-align: center; }
+.shoppingCart .goodList.lose .item .sys span.key { background-color: #999999; color: white; font-size: .8rem; padding: .25rem; border-radius: .25rem; }
+.shoppingCart .goodList.lose .item .good { width: calc(100% - 3rem); }
+.shoppingCart .goodList .sys { float: left; width: 2rem; height: 7rem; line-height: 7rem; display: inline-block; }
+.shoppingCart .goodList .sys input { width: 1.5rem; height: 1.5rem; }
+.shoppingCart .goodList .good { display: inline-block; float: left; width: calc(100% - 2rem); }
+.shoppingCart .goodList .good .cover { width: 7rem; height: 7rem; display: inline-block; float: left; }
+.shoppingCart .goodList .good .info-box { width: calc(100% - 7rem); display: inline-block; float: left; }
+.shoppingCart .goodList .good .info,
+.shoppingCart .goodList .good .set { display: block; width: 100%; box-sizing: border-box; padding-left: 1rem; }
+.shoppingCart .goodList .good .info { line-height: 2.2rem; }
+.shoppingCart .goodList .good .info span.name { color: #666666; font-size: 1.4rem; vertical-align: bottom; display: inline-block; width: calc(100% - 3rem); overflow: hidden; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; }
+.shoppingCart .goodList .good .info span.number { color: #333333; font-size: 1.2rem; float: right; vertical-align: bottom; display: inline-block; }
+.shoppingCart .goodList .good .info p.desc { color: #666666; font-size: 1.2rem; width: 100%; padding-right: 3.5rem; box-sizing: border-box; overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis; text-overflow: ellipsis; display: block; }
+.shoppingCart .goodList .good .set { margin-top: .5rem; height: 2.2rem; line-height: 2.2rem; }
+.shoppingCart .goodList .good .set span.price,
+.shoppingCart .goodList .good .set .number-box { display: inline-block; vertical-align: middle; }
+.shoppingCart .goodList .good .set span.price { color: #333333; font-size: 1.2rem; }
+.shoppingCart .goodList .good .set .number-box { border-right: none; box-sizing: border-box; float: right; letter-spacing: 0; }
+.shoppingCart .goodList .good .set .number-box span.val { width: 3.5rem; }
+.shoppingCart .goodList .good .set .number-box span.disable { border-color: #e5e5e5; }
+.shoppingCart .goodList .good .set .number-box span { float: left; display: inline-block; width: 2.2rem; height: 2.2rem; text-align: center; line-height: 1.9rem; border: 1px solid #b2b2b2; border-right: none; font-size: 1rem; margin: 0; box-sizing: border-box; }
+.shoppingCart .goodList .good .set .number-box span:last-child { border-right: 1px solid #b2b2b2; }
+.shoppingCart img.response-img { width: 100%; min-height: 100%; height: auto; }
+.shoppingCart .error-box { position: fixed; top: 50%; left: 4rem; right: 4rem; height: 26rem; margin-top: -13rem; text-align: center; }
+.shoppingCart .error-box .error-icon { margin-bottom: 4rem; }
+.shoppingCart .error-box .error-help { color: #000; font-size: 1.6rem; line-height: 1.8rem; text-align: center; }
 </style>

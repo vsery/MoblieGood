@@ -104,9 +104,9 @@ export default {
                 email: 'administrator@qq.com'
             },
             possession: [
-                { id: 1, text: '积分', path: 'Index', number: 1388 },
+                { id: 1, text: '积分', path: 'MyIntegral', number: 1388 },
                 { id: 2, text: '收藏', path: 'MyCollect', number: 88 },
-                { id: 3, text: '足迹', path: 'Index', number: 118 }
+                { id: 3, text: '足迹', path: 'MyTrace', number: 118 }
             ]
         }
     },

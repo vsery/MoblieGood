@@ -92,6 +92,12 @@ export default {
 	padding-top: 2rem;
 }
 /* 列表 */
+.three-box-img-item .item-left .item-ct .text {
+	font-size: 1.3rem;
+}
+.three-box-img-item .item-left .item-ct .gray-text {
+	font-size: 1.2rem;
+}
 .content .three-box-img-item .item-left .item-icon-box {
 	width: 3rem;
 }
@@ -99,6 +105,7 @@ export default {
 	margin-left: 3rem;
 }
 .content .three-box-img-item .item-right span {
-	font-size: 1.4rem;
+	font-size: 1.2rem;
+	line-height: 1.8rem;
 }
 </style>

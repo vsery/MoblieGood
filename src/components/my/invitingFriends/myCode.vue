@@ -7,7 +7,7 @@
 						<img src="../../../../static/img/good1.jpg"/>
 						<div class="item-text">
 							<div class="ellipsis">{{ userName }}的二维码</div>
-							<div class="gray">邀请好友有好礼</div>
+							<div class="gray">邀请好友有惊喜哦</div>
 						</div>
 					</div>
 					<div class="img-box">
@@ -40,6 +40,12 @@ export default {
 	},
 	mounted() {
 		document.title = '邀请好友';
+		//设置.ct-hd动态宽高
+		var width = document.documentElement.clientWidth;
+		var elem = document.querySelector("div[class='ct-hd']");
+		elem.style.width = width * 0.86 +'px';
+		var elemWidth = elem.offsetWidth; 
+		elem.style.height =  elemWidth * 1.23 +'px';
 	},
 	methods: {
 		
@@ -65,51 +71,55 @@ export default {
 	box-sizing: border-box;
 }
 .content .code-box {
-	padding: 2rem 0;
+	padding: 2.8rem 6%;
 }
 .content .code-box .ct-hd {
-	width: 25.4rem;
-	height: 31.25rem;
+	width: 86%;
 	margin: 0 auto;
 	background: url(../../../assets/img/bgCode.png) no-repeat;
 	background-size: contain;
+	padding: 1% 3.5%;
+	box-shadow: 2px 8px 24px 2px 
+		rgba(212, 174, 1, 0.35);
 }
 .content .code-box .ct-bd {
-	width: 25.4rem;
 	margin: 0 auto;
-	padding: 2rem 1.5rem 0;
 	font-size: 1.5rem;
 	color: #763b00;
 	text-align: center;
+	padding: 4rem 2rem;
 } 
 .content .code-box .ct-bd p {
 	padding-bottom: 1rem;
 }
 .content .code-box .btn-share {
 	display: block;
-	line-height: 3.5rem;
+	line-height: 5rem;
 	font-size: 1.5rem;
 	color: #fff;
 	background-color: #ff7800;
 	border-radius: 0.3rem;
-	margin: 1rem 0 2rem;
+	margin: 0 0 2rem;
 }
 .code-box .ct-hd .item-box {
-	padding: 1.5rem 1.5rem 1.5rem 3rem;
+	display: flex;
+	width: 100%;
+	height: 29%;
+	padding-top: 2rem;
+	justify-content: center;
 }
 .code-box .ct-hd .item-box img {
-	float: left;
-	width: 4rem;
-	height: 4rem;
+	width: 4.6rem;
+	height: 4.6rem;
 	border-radius: 50%;
 }
 .code-box .ct-hd .item-box .item-text {
-	margin-left: 5rem;
-	font-size: 1.4rem;
-	line-height: 2rem;
+	margin-left: 1rem;
+	font-size: 1.65rem;
+	line-height: 2.3rem;
 }
 .code-box .img-box {
-	padding: 5rem;
+	padding: 10% 15%;
 	padding-bottom: 0;
 }
 .code-box .img-box img {

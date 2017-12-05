@@ -24,19 +24,19 @@
 						<button class="rotate"><i class="iconfont icon-fabulous"></i>没帮助</button>
 					</div>
 					<div class="evaluate-success">
-						<div v-show="yes" class="yes"><i class="iconfont icon-fabulous"></i>有帮助 | 我们会继续努力的！</div>
+						<div v-show="yes" class="yes"><i class="iconfont icon-zan2"></i>有帮助 | 我们会继续努力的！</div>
 						<div v-show="no" class="no">
-							<span><i class="iconfont icon-fabulous"></i>没帮助 | 我们会尽快改进，谢谢！</span>
+							<span><i class="iconfont icon-zan2"></i>没帮助 | 我们会尽快改进，谢谢！</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="text-two-item">
-			<a href="javascript:;" class="clearfix">
+			<div class="clearfix">
 				<div class="item-left">咨询电话<span>(9:00-24:00)</span></div>
-				<div class="item-right">400-5885-2885</div>
-			</a>
+				<div class="item-right"><a href="tel:40058852885">400-5885-2885</a></div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -86,7 +86,7 @@
 		display: block;
 		width: 1.5rem;
 		height: 1.5rem;
-		line-height: 1.5rem;
+		line-height: 1.6rem;
 		text-align: center;
 		margin-right: 0.33rem;
 		font-size: 1rem;
@@ -165,6 +165,7 @@
 	}
 	.evaluate-success {
 		text-align: center;
+		font-size: 1.2rem;
 	}
 	.evaluate-success .yes {
 		color: #FF4342;
@@ -175,10 +176,11 @@
 	}
 	.evaluate-success .no span {
 		position: relative;
-		padding-left: 1.5rem;
+		padding-left: 2rem;
 	}
 	.evaluate-success .no span i {
 		position: absolute;
+		top: 0;
 		left: 0;
 		display: block;
 		transform: rotate(180deg);

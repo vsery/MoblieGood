@@ -101,13 +101,13 @@
 		border-bottom: 1px solid #e9e9e9;
 	}
 	.query-box .query {
-		width: 31.6rem;
+		width: 90%;
 		height: 3rem;
 		line-height: 3rem;
 		margin: 0 auto;
 		background-color: #ededed;
 		border-radius: 1.25rem;
-		font-size: 1.2875rem;
+		font-size: 1.25rem;
 		color: #999;
 		text-align: center;
 		border-bottom: 0.1rem solid #e9e9e9;
