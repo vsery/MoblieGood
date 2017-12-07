@@ -15,7 +15,7 @@
     		</div>
     		<div class="nav-right" :style="{height: minNavH + 'rem'}">
     			<div class="top-img">
-    				<img src="../../assets/img/banner01.png" />
+    				<img src="../../assets/img/img04.png" />
     			</div>
     			<div class="part">
     				<div class="part-title"><i>—</i>推荐区<i>—</i></div>
@@ -63,7 +63,7 @@ export default {
     },
     mounted() {
         this.$nextTick(function() {
-        	this.minNavH = this.clientH - 3.7 - 4.7;
+        	this.minNavH = this.clientH - 3.7 - 1;
         });
     },
     methods: {
@@ -113,6 +113,7 @@ export default {
 	margin: 2.0rem 0;
 	padding: 0.5rem 0;
 	text-align: center;
+	font-size: 1.5rem;
 }
 .nav-left > ul > li.active,
 .nav-left > ul > li:first-child {
@@ -139,6 +140,7 @@ export default {
 }
 .nav-right .part .part-title {
 	text-align: center;
+	font-size: 1.2rem;
 }
 .nav-right .part .part-title > i {
 	color: #d4d4d4;
@@ -148,7 +150,7 @@ export default {
 	width: 100%;
 	clear: both;
 }
-.part-con .part-item {
+.part-con .part-item {	
 	float: left;
 	width: 33.3%;
 	text-align: center;

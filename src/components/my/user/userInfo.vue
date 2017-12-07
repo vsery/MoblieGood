@@ -2,7 +2,7 @@
     DOM 结构
 -->
 <template>
-    <div class="userInfo" id="userInfo" :style="{height:bodyHeight}">
+    <div :class="['userInfo ']+[inputVisible?'on':'']" id="userInfo" :style="{height:bodyHeight}">
         <div class="header">
             <header-bar :isWhite="false"></header-bar>
         </div>
@@ -36,15 +36,18 @@
                 <div class="item"><span>{{userInfo.email}}</span></div>
             </mt-cell>
         </div>
-        <template v-if="inputVisible">
-            <div class="modal-body">
-                <input type="text" name="" v-model="inputActions" @keyup.13="changeInputActions($event)">
-            </div>
-            <div class="modal-backdrop in" @click="closeInputPicker"></div>
-        </template>
         <mt-datetime-picker ref="picker" type="date" year-format="{value}年" month-format="{value}月" date-format="{value}日" v-model="birthdayVisible" :startDate="new Date('1900-01-01')" :endDate="new Date('2100-12-30')" @confirm="handleConfirm"></mt-datetime-picker>
         <mt-actionsheet ref="headerVisible" :actions="headerActions" v-model="headerVisible"></mt-actionsheet>
         <mt-actionsheet ref="sexVisible" :actions="sexActions" v-model="sexVisible" cancelText></mt-actionsheet>
+        <template v-if="inputVisible">
+            <div class="modal-body">
+                <div class="input-box">
+                    <input type="text" name="" v-model="inputActions" @keyup.13="changeInputActions($event)">
+                    <a class="close" @click='inputVisible = false'></a>
+                </div>
+            </div>
+            <div class="modal-backdrop in" @click="closeInputPicker"></div>
+        </template>
     </div>
 </template>
 <script>
@@ -241,7 +244,16 @@ export default {
 #userInfo > .content .mint-cell.header { min-height: 6.45rem; }
 #userInfo > .content ~ .content { margin-top: 1.35rem; }
 #userInfo > .content .line { margin: 0 auto; height: 1px; width: calc(100% - 2rem); background-color: #e5e5e5; display: block; }
-#userInfo .modal-body { position: fixed; left: 0; top: 0; bottom: auto; right: 0; z-index: 11; }
-#userInfo .modal-body input { width: 100%; margin-top: .83rem; height: 4.16rem; line-height: 4.16rem; padding: 0 2rem; box-sizing: border-box; }
+#userInfo.on { overflow: hidden; }
+#userInfo .modal-body { position: fixed; left: 0; top: 0; bottom: auto; right: 0; z-index: 1050; }
+#userInfo .modal-body .input-box { width: 100%; height: 4rem; border-radius: 0; background-color: white; position: fixed; left: 0; top: 0; right: 0; overflow: hidden; }
+
+#userInfo .modal-body .input-box a.close { position: absolute; width: 1.3rem; height: 1.3rem; background-color: #b2b2b2; color: white; font-size: 1.1rem; text-align: center; line-height: 1.2rem; right: 1.58rem; top: 1.28rem; border-radius: 50%; font-weight: 500; }
+#userInfo .modal-body .input-box a.close:before,
+#userInfo .modal-body .input-box a.close:after { width: 60%; height: 1px; content: ''; display: block; background: white; position: absolute; right: 20%; top: calc(50% - 1px); }
+#userInfo .modal-body .input-box a.close:before { -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }
+#userInfo .modal-body .input-box a.close:after { -webkit-transform: rotate(135deg); -ms-transform: rotate(135deg); -o-transform: rotate(135deg); transform: rotate(135deg); }
+#userInfo .modal-body .input-box input { width: 100%; height: 100%; line-height: 4rem; font-size: 1.3rem; padding: 0 1rem; }
+#userInfo .modal-body .input-box input:focus {}
 #userInfo .modal-backdrop.in { background-color: rgba(0,0,0,.5); position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 10; }
 </style>

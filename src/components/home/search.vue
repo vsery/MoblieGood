@@ -4,8 +4,8 @@
     	<div class="operate">
     		<i class="iconfont">&#xe616;</i>
     		<input type="text" placeholder="升级保温杯" v-model="searchText"  @keydown="handleSearch($event)" />
-    		<span v-if="searchText ==''">取消</span>
-    		<span v-else @click="handleSearch">搜索</span>
+    		<span v-if="searchText ==''" @click="$router.go(-1)">取消</span>
+    		<span v-else @click="handleSearch2">搜索</span>
     	</div>
     	<div class="search-group">
     		<h3>
@@ -40,14 +40,16 @@ export default {
     },
     mounted() {
         this.$nextTick(function() {
-        	
+        	document.title = this.title;
         });
     },
     methods: {
     	handleSearch: function(e) {
     		if(e.keyCode==13) {
-    			
+    			this.$router.push('/searchResult');
     		}
+    	},
+    	handleSearch2: function() {
     		this.$router.push('/searchResult');
     	}
     }
@@ -72,7 +74,8 @@ export default {
 .operate >i.iconfont {
 	position: absolute;
 	left: 2.6rem;
-	top: 0.8rem;
+	top: 1.0rem;
+	font-size: 1.4rem;
 }
 .operate > input[type=text] {
 	width: 85%;
@@ -80,6 +83,7 @@ export default {
 	background: #ededed;
 	border-radius: 0.5rem;
 	padding-left: 3.3rem;
+	font-size: 1.5rem;
 }
 .operate > span {
 	float: right;
@@ -103,11 +107,11 @@ export default {
 .search-group > div > span {
 	display: inline-block;
 	padding: 0.7rem 1.2rem;
-	margin-right: 1.45rem;
-	margin-top: 1.45rem;
+	margin-right: 1.4rem;
+	margin-top: 1.4rem;
 	border: 0.1rem solid #ccc;
 	border-radius: 0.2rem;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	color: #333;
 }
 .search-group > div > span.red {

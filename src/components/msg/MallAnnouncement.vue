@@ -84,12 +84,12 @@
 				margin-bottom: 2.5rem;
 			}
 			.line{
-				height: 2px;
+				height: 0.1rem;
 				width: 37.5rem;
 				background: #ebebeb;
-				position: absolute;
-				left: -1.5rem;
-				bottom: 0;
+				position: fixed;
+				left: 0;
+				top: 3.7rem;
 			}
 			/*商城公告start*/
 			#MallAnnouncement{
@@ -141,13 +141,14 @@
 				color: #666;
 				font-size: 1.4rem;
 				height: 3rem;
-				padding-top: 1.6rem;	
+				padding-top: 1.6rem;
+				
 			}
 			#MallAnnouncement .announcement_box_content_nav p{
 				color: #666;
 				font-size: 1.4rem;
-				height: 3rem;
-				line-height: 1.6rem;
+				height: 4rem;
+				line-height: 2rem;
 				/*文字溢出*/
 				display: -webkit-box;
 -webkit-box-orient: vertical;

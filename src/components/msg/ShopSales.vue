@@ -37,7 +37,7 @@
     data(){
 		return {
 			shops:[
-			{'time':'09:41','link':'#','img':'../../src/components/msg/img/sale1.png','cont':'男仕魅力 行走的荷尔蒙'},
+			{'time':'09:41','link':'#','img':'../../src/components/msg/img/sale1.png','cont':'男仕魅力 行走的荷尔蒙男仕魅力 行走的荷尔蒙男仕魅力 行走的荷尔蒙'},
 			{'time':'09:41','link':'#','img':'../../src/components/msg/img/sale2.png','cont':'秋冬 服装搭配饰品合集'},
 			{'time':'09:41','link':'#','img':'../../src/components/msg/img/sale3.png','cont':'上新优惠购 9折出售'},
 			{'time':'09:41','link':'#','img':'../../src/components/msg/img/sale4.png','cont':'春夏大爱の私服外套'},
@@ -55,16 +55,16 @@
 				clear: both;
 			}
 			.header{
-				position: relative;
 				margin-bottom: 1.1rem;
+				position: relative;
 			}
 			.line{
-				height: 2px;
+				height: 0.1rem;
 				width: 37.5rem;
 				background: #ebebeb;
-				position: absolute;
-				left: -1.5rem;
-				bottom: 0;
+				position: fixed;
+				left: 0;
+				top: 3.7rem;
 			}
 			/*商城活动start*/
 			#ShopSales{
@@ -121,6 +121,11 @@
 				color: #fff;
 				font-size: 1.4rem;
 				text-indent: 1em;
+				/*文字溢出*/
+				display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;
 			}
 			.no_more{
 				width: 7rem;

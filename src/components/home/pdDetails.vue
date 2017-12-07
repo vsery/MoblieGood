@@ -15,7 +15,7 @@
     			</div>
     			<div class="img-btm">
 	    			<div class="product-meta">
-	    				<div class="title"><label>自营</label>日式色织水洗棉格纹四件套 新款</div>
+	    				<div class="title"><span class="sign">自营</span><span>日式色织水洗棉格纹四件套 新款日式色织水洗棉格纹四件套 新款</span></div>
 	    				<div class="detail">水洗做旧感，纯棉透气</div>
 						<div class="prize">
 							<span class="new-prize"><i>¥</i>279.00</span>
@@ -130,30 +130,37 @@ export default {
 	left: 0;
 	padding: 1.5rem 0;
 	margin: 0 1.5rem;
-	border-bottom: 0.1rem solid #e6e6e6;
+	border-bottom: 0.05rem solid #e6e6e6;
 }
 .product-meta .title {
-	width: calc(100% - 7.0rem);
-	line-height: 1.5rem;
+	width: calc(100% - 7.2rem);
+	line-height: 1.4rem;
 	color: #242424;
 	font-size: 1.5rem;
 	overflow: hidden;
 }
-.product-meta .title label {
-	display: inline-block;
-	height: 1.5rem;
-	line-height: 1.5rem;
+.product-meta .title span:nth-child(2) {
+	line-height: 2.0rem;
+}
+.product-meta .title span.sign {
+	/*display: inline-block;*/
+	float: left;
+	height: 1.4rem;
+	line-height: 1.6rem;
 	background: #e93b3d;
 	font-size: 1.0rem;
 	color: #fff;
-	padding: 0 0.3rem;
-	border-radius: 0.2rem;
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+	/*padding: 0rem 0.3rem;*/
 	margin-right: 0.3rem;
+	margin-top: 0.2rem;
+	border-radius: 0.2rem;
 }
 .product-meta .detail {
 	width: calc(100% - 7.0rem);
-	height: 1.25rem;
-	line-height: 1.25rem;
+	height: 1.3rem;
+	line-height: 1.4rem;
 	color: #666;
 	font-size: 1.3rem;
 	margin-top: 1.1rem;
@@ -175,7 +182,7 @@ export default {
 }
 .product-meta .prize .integral {
 	font-size: 1.0rem;
-	border: 0.1rem solid #e93b3d;
+	border: 0.05rem solid #e93b3d;
 	border-radius: 0.2rem;
 	padding: 0.1rem 0.4rem;
 	vertical-align: super;
@@ -196,7 +203,7 @@ export default {
 	top: 1.5rem;
 	text-align: center;
 	padding: 1.0rem 0 1.5rem 1.5rem;
-	border-left: 0.1rem dashed #d9d9d9;
+	border-left: 0.05rem dashed #d9d9d9;
 }
 .product-meta .right p {
 	color: #e93b3d;
@@ -210,7 +217,7 @@ export default {
 }
 .product-meta .right > button {
 	border-radius: 0.2rem;
-	border: 0.1rem solid #7f7f7f;
+	border: 0.05rem solid #7f7f7f;
 	background: #fff;
 	padding: 0.3rem 1.2rem;
 	color: #333;
@@ -237,13 +244,13 @@ export default {
 	margin-right: 0.4rem;
 }
 .choice {
-	padding-left: 0.6rem;
+	/*padding-left: 0.6rem;*/
 	background: #fff;
 	margin-bottom: 1.0rem;
 }
 .comment-item {
 	margin-left: 1.5rem;
-	border-top: 0.1rem solid #d7d7d7;
+	border-top: 0.05rem solid #d7d7d7;
 }
 .comment-item .account {
 	padding: 1.5rem 0 1.0rem 0;
@@ -258,6 +265,7 @@ export default {
 }
 .account h3 {
 	line-height: 3.2rem;
+	font-size: 1.3rem;
 }
 .account .grade {
 	width: 1.4rem;
@@ -270,10 +278,13 @@ export default {
 	font-size: 1.2rem;
 	margin-bottom: 1.3rem;
 }
+.comment-item .con {
+	margin-right: 1.5rem;
+}
 .comment-item .con .con-text {
 	color: #333;
 	font-size: 1.4rem;
-	line-height: 1.8rem;
+	line-height: 2.0rem;
 	margin-bottom: 1.0rem;
 }
 .comment-item .con .con-img {
@@ -306,25 +317,32 @@ export default {
 	height: 4.9rem;
 	line-height: 4.9rem;
 	background: #fff;
-	border-top: 0.1rem solid #d9d9d9;
+	border-top: 0.05rem solid #d9d9d9;
 }
 .buy span.iconfont {
-	display: inline-block;
+	float: left;
+	/*display: inline-block;*/
 	width: 14.5%;
 	font-size: 2.1rem;
 	text-align: center;
 	color: #7f7f7f;
-	border-right: 0.1rem solid #d9d9d9;
-	margin-right: -0.24rem;
+	box-sizing: border-box;
+}
+.buy span.iconfont:nth-child(1) {
+	border-right: 0.05rem solid #d9d9d9;
 }
 .buy .btn-buy,
 .buy .btn-add {
-	width: 34.5%;
-	height: 100%;
+	float: left;
+	width: 35%;
+	height: 4.9rem;
 	background: #fff;
 	color: #333;
 	font-size: 1.5rem;
-	margin-right: -0.24rem;
+	box-sizing: border-box;
+}
+.buy .btn-buy {
+	border-left: 0.05rem solid #d9d9d9;
 }
 .buy .btn-add {
 	float: right;

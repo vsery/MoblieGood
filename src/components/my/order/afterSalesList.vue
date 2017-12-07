@@ -97,13 +97,14 @@ export default {
 </script>
 <style>
 #afterSalesList { background-color: #f4f4f4; }
-#afterSalesList .order-item { width: 100%; margin-top: 1rem; background-color: white; box-sizing: border-box; padding: 0 1rem; }c
+#afterSalesList .order-item { width: 100%; margin-bottom: 1rem; background-color: white; box-sizing: border-box; padding: 0 1rem; }
 #afterSalesList .order-item > * { box-sizing: border-box; }
-#afterSalesList .order-item .order-title { width: 100%; height: 3.75rem; line-height: 3.75rem; border-bottom: 1px double #e5e5e5; }
+#afterSalesList .order-item .order-title { width: 100%; border-bottom: 1px double #e5e5e5; }
+#afterSalesList .order-item .order-title .shop * { height: 3.75rem; line-height: 3.75rem; display: inline-block; vertical-align: top; }
 #afterSalesList .order-item .order-title .shop { display: inline-block; }
-#afterSalesList .order-item .order-title .shop i.icon { color: #b5b4b7; font-size: 2rem; margin-right: .5rem; vertical-align: middle; }
-#afterSalesList .order-item .order-title .shop span.name { color: #b5b4b7; color: #333333; font-size: 1.19rem; }
-#afterSalesList .order-item .order-title .order-state { float: right; display: inline-block; }
+#afterSalesList .order-item .order-title .shop i.icon { color: #b5b4b7; font-size: 2rem; margin-right: .5rem; line-height: 3.5rem; }
+#afterSalesList .order-item .order-title .shop span.name { color: #b5b4b7; color: #333333; font-size: 1.19rem; display: inline-block; }
+#afterSalesList .order-item .order-title .order-state { float: right; display: inline-block; height: 3.75rem; line-height: 3.75rem; }
 #afterSalesList .order-item .order-title .order-state span { font-size: 1.19rem; color: #999999; font-weight: 500; letter-spacing: .05rem; }
 #afterSalesList .order-item .order-title .order-state span.active { color: #ff4242; }
 #afterSalesList .order-item .order-title .order-state i.icon { font-size: 1rem; }
@@ -112,17 +113,17 @@ export default {
 #afterSalesList .order-item .order-info .order-cover img { width: 100%; min-height: 100%; height: auto; }
 #afterSalesList .order-item .order-info .order-desc { display: inline-block; width: calc(100% - 7rem); vertical-align: top; }
 #afterSalesList .order-item .order-info .order-name { display: block; color: #333333; padding: 0 .5rem; font-size: 1.2rem; line-height: 1.4rem; overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-#afterSalesList .order-item .order-info .order-help { display: block; padding: 0 .5rem; margin: .5rem 0; padding-right: 2.5rem; }
+#afterSalesList .order-item .order-info .order-help { display: block; padding: 0 .5rem; margin: .5rem 0 .75rem; padding-right: 2.5rem; }
 #afterSalesList .order-item .order-info .order-help span { color: #999999; font-size: 1rem; }
 #afterSalesList .order-item .order-info .order-help .key { margin-right: 1.5rem; line-height: 1.4rem; }
 #afterSalesList .order-item .order-info .order-help .goods-number { float: right; margin-top: 0; margin-right: -2rem; }
 #afterSalesList .order-item .order-info .order-price.afterSales { padding: 0 .5rem; color: #ff4242; font-size: 1rem; }
-#afterSalesList .order-item .order-info .order-price.afterSales span { margin-left: 1rem; }
+#afterSalesList .order-item .order-info .order-price.afterSales span { margin-left: 1rem; font-weight: bold; font-size: 1.2rem; }
 #afterSalesList .order-item .order-system { display: block; padding: .75rem 0; text-align: right; }
 #afterSalesList .order-item .order-system .order-state { width: 100%; text-align: left; color: #333333; font-size: 1.2rem; font-weight: 500; }
 #afterSalesList .order-item .order-system .order-state i.icon { color: #ff4242; vertical-align: middle; margin-right: .75rem; font-size: 1.25rem; font-weight: 500; }
 #afterSalesList .order-item .order-system .order-state span { margin-right: .75rem; vertical-align: middle; }
-#afterSalesList .order-item .order-system a.order.button { font-size: 1.19rem; display: inline-block; height: 2.5rem; line-height: 2.5rem; border: .1px double #939393; padding: 0 1rem; border-radius: .25rem; font-weight: 100; }
+#afterSalesList .order-item .order-system a.order.button { font-size: 1.19rem; display: inline-block; height: 2.5rem; line-height: 2.5rem; border: .1px double #333; color: #333; padding: 0 1rem; border-radius: .25rem; font-weight: 300; }
 #afterSalesList .order-item .order-system a.order.button.active { color: #ff4242; border-color: #ff4242; }
 #afterSalesList .order-item .order-system a.order.button~a.order.button { margin-left: .75rem; }
 </style>

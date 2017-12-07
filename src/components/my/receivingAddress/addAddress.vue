@@ -5,7 +5,7 @@
 				<input type="text" name="userName" id="userName" :value="inpValues.name" @change="changeName" placeholder="姓名" />
 			</div>
 			<div class="inp-item">
-				<input type="text" name="userPhone" id="userPhone" :value="inpValues.phone" @change="changePhone" placeholder="手机号" />
+				<input type="tel" name="userPhone" id="userPhone" :value="inpValues.phone" @change="changePhone" placeholder="手机号" />
 			</div>
 			<div class="inp-item">
 				<div class="disabled-address " :class="[once?'active':'']"  @click="setAddress">{{ inpValues.state }}</div>
@@ -53,32 +53,32 @@
 				popupVisible: false,
 				myAddressSlots: [{
 					flex: 1,
-					            defaultIndex: 1,
+		            defaultIndex: 1,
 					values: Object.keys(myaddress),
-					            className: 'slot1',
-					            textAlign: 'center',
+		            className: 'slot1',
+		            textAlign: 'center',
 					value: "",
 				}, {            
 					divider: true,
-					            content: '-',
-					            className: 'slot2'          
+		            content: '-',
+		            className: 'slot2'          
 				}, {            
 					flex: 1,
-					            values: null,
-					            className: 'slot3',
-					            textAlign: 'center',
+		            values: null,
+		            className: 'slot3',
+		            textAlign: 'center',
 					value: "",
 				}, {            
 					divider: true,
-					            content: '-',
-					            className: 'slot4'          
+		            content: '-',
+		            className: 'slot4'          
 				}, {            
 					flex: 1,
 					            values: null,
 					value: "",
-					            className: 'slot5',
-					            textAlign: 'center'          
-				}        ],
+		            className: 'slot5',
+		            textAlign: 'center'          
+				}],
 			}
 		},
 		mounted() {
@@ -128,9 +128,9 @@
 			},
 			dataSubmit() {
 				if(this.radioBtn === false) {
-					this.inpValues.state = 0;
+//					this.inpValues.state = 0;
 				} else {
-					this.inpValues.state = 1;
+//					this.inpValues.state = 1;
 				}
 				if(this.inpValues.name && this.inpValues.phone && this.inpValues.address && this.inpValues.detailAddress) {
 					this.$router.push({
@@ -156,6 +156,10 @@
 </script>
 
 <style>
+	.addAddress {
+		min-height: 100vh;
+		background-color: #F5F5F5;
+	}
 	.addAddress .mint-popup.mint-popup-bottom {
 		width: 100%;
 	}
@@ -221,6 +225,7 @@
 		text-align: center;
 		font-size: 1.4rem;
 		color: #444;
+		background-color: #fbfbfb;
 	}
 	
 	.addAddress .radio-box i {
@@ -243,8 +248,8 @@
 		float: left;
 		display: inline-block;
 		width: 50%;
-		height: 4rem;
-		line-height: 4rem;
+		height: 4.16rem;
+		line-height: 4.16rem;
 		background-color: #fff;
 		text-align: center;
 		font-size: 1.4rem;

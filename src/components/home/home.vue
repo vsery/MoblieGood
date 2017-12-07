@@ -112,8 +112,7 @@ export default {
     },
     mounted() {
     	this.$nextTick(function() {
-    		document.title = this.title + '-首页';
-    		
+    		document.title = this.title + '-首页';    		
     		window.addEventListener('scroll', this.needBackTop); //监听滚动事件
     	})
     },
@@ -121,7 +120,6 @@ export default {
     	
     },
     methods: {
-    	
     }
 }
 
@@ -160,7 +158,7 @@ export default {
 	line-height: 3.6rem;
 	border-radius: 3.6rem;
 	color: #fff;
-	font-size: 2.1rem;
+	font-size: 1.7rem;
 	font-weight: lighter;
 }
 .menu ul li > p {
@@ -169,116 +167,54 @@ export default {
 	font-size: 1.1rem;
 }
 .menu ul li:nth-child(1) .icon {
-	border: 0.1rem solid #ffa749;
+	border: 0.05rem solid #ffa749;
 	background: #ffcd97;
-	font-size: 1.9rem;
-	line-height: 3.8rem;
+	font-size: 1.6rem;
+	line-height: 3.6rem;
 }
 .menu ul li:nth-child(2) .icon {
-	border: 0.1rem solid #77bfee;
+	border: 0.05rem solid #77bfee;
 	background: #a9d9f8;
 }
 .menu ul li:nth-child(3) .icon {
-	border: 0.1rem solid #ff696c;
+	border: 0.05rem solid #ff696c;
 	background: #ffa3a4;
 }
 .menu ul li:nth-child(4) .icon {
-	border: 0.1rem solid #88aeff;
+	border: 0.05rem solid #88aeff;
 	background: #b8ceff;
 }
 .menu ul li:nth-child(5) .icon {
-	border: 0.1rem solid #8ae6a9;
+	border: 0.05rem solid #8ae6a9;
 	background: #b0eec5;
 }
 .menu ul li:nth-child(6) .icon {
-	border: 0.1rem solid #c39dfd;
+	border: 0.05rem solid #c39dfd;
 	background: #d7bbfe;
 }
 .menu ul li:nth-child(7) .icon {
-	border: 0.1rem solid #88aeff;
+	border: 0.05rem solid #88aeff;
 	background: #b8ceff;
 	line-height: 3.9rem;
 }
 .menu ul li:nth-child(8) .icon {
-	border: 0.1rem solid #ff696c;
+	border: 0.05rem solid #ff696c;
 	background: #ffa3a4;
-	font-size: 2.2rem;
+	font-size: 2.0rem;
 }
 .hot,
 .like {
-	min-height: 56rem;
+	min-height: 97rem;
 	background: #fff;
 	margin-top: 1.0rem;
 	clear: both;
 }
 .hot > h2,
 .like > h2 {
-	font-size: 1.5rem;
+	font-size: 1.5rem;	
 	padding: 2.3rem 0 1.9rem 0;
 	/*height: 5.5rem;*/
 	/*line-height: 5.5rem;*/
 	text-align: center;
-}
-.common-ul {
-	clear: both;
-}
-.common-ul li {    
-	float: left;
-	width: 50%;
-	min-height: 25.4rem;
-	margin-left: 0;
-	padding: 1.1rem;
-	box-sizing: border-box;
-	border-top: 0.1rem solid #d9d9d9; 
-	background: #fff;
-	margin-top: -0.1rem;
-}
-.common-ul li:nth-child(2n + 1) {
-	border-right: 0.1rem solid #d9d9d9; 
-}
-.common-ul .picture {
-	width: 100%;
-	border-radius: 0.2rem;
-}
-.common-ul .title {
-	width: 100%;
-	height: 1.4rem;
-	margin: 1.2rem 0 1.0rem 0;
-	color: #333;
-	font-size: 1.4rem;
-	overflow: hidden;
-}
-.common-ul .info {
-	width: 100%;
-	height: 1.2rem;
-	font-size: 1.2rem;
-	color: #999;
-	margin-bottom: 1.2rem;
-	overflow: hidden;
-}
-.common-ul .data {
-	width: 100%;
-	height: 1.5rem;
-	font-size: 1.2rem;
-	color: #999;
-	overflow: hidden;
-}
-.data .prize {
-	color: #d4282d;
-	font-size: 1.5rem;
-}
-.data .prize i {
-	font-size: 1.1rem;
-	margin-right: 0.2rem;
-}
-.data .integral {
-	float: right;
-	height: 1.5rem;
-	line-height: 1.5rem;
-	background: #e36844;
-	color: #fff;
-	padding: 0 0.6rem;
-	font-size: 1.0rem;
-	border-radius: 0.2rem;
 }
 </style>

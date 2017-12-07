@@ -92,21 +92,21 @@ export default {
 <style>
 #afterSalesState { background-color: #f4f4f4; }
 #afterSalesState .prompt-box { width: 100%; background-color: #ff4242; position: relative; box-sizing: border-box; padding: 1.5rem 0 1rem 2rem; margin-bottom: 1rem; }
-#afterSalesState .prompt-box:before { content: ''; display: block; width: calc(100% - .5rem); height: 3px; position: absolute; left: .5rem; bottom: -.2rem; border-bottom: .5rem dotted #ff4242; z-index: 99; }
-#afterSalesState .prompt-box:after { content: ''; display: block; width: 100%; height: 3px; position: absolute; left: 0; bottom: -.2rem; border-bottom: .5rem dotted #ff4242; z-index: 99; }
+#afterSalesState .prompt-box:after {content: ''; display: block; position: absolute; height: 1rem; width: 100%; background-image: url('/static/img/back-red.png'); background-size: cover; left: 0; bottom: -.75rem; }
 #afterSalesState .prompt-box * { color: white; line-height: 1.75em; }
 #afterSalesState .prompt-box .state { font-size: 1.37rem; margin-bottom: .5rem; }
 #afterSalesState .prompt-box .item { font-size: 1.1rem; }
 #afterSalesState .prompt-box span { margin-left: .75rem; vertical-align: top; display: inline-block; }
-#afterSalesState .prompt-box span.callback { font-size: 1.2rem; color: #ffcc00; }
+/*#afterSalesState .prompt-box span.price { font-size: 1.2875rem; }*/
+#afterSalesState .prompt-box span.callback { font-size: 1.1rem; color: #ffcc00; }
 #afterSalesState .mint-cell { margin-bottom: 1rem; }
 #afterSalesState .mint-cell-text { color: #333333; font-size: 1.2875rem; }
 #afterSalesState .order-info { background-color: white; width: 100%; box-sizing: border-box; padding: 0 1.5rem; }
-#afterSalesState .order-info .items .item { padding: 1.45rem 0; border-bottom: 1px dotted #e5e5e5; text-align: left; }
-#afterSalesState .order-info .items .item label { font-size: 1.2875rem; color: #666666; line-height: 1.6rem; display: inline-block; width: 4em; vertical-align: top; }
-#afterSalesState .order-info .items .item span.val { margin-left: 1.5rem; font-size: 1.2875rem; color: #333333; display: inline-block; width: calc(100% - 5.5em); vertical-align: top; line-height: 1.6rem; }
+#afterSalesState .order-info .items .item { padding: 1.15rem 0; border-bottom: 1px dotted #e5e5e5; text-align: left; }
+#afterSalesState .order-info .items .item label { font-size: 1.2875rem; color: #666666; line-height: 1.6rem; display: inline-block; width: 5em; vertical-align: top; }
+#afterSalesState .order-info .items .item span.val { margin-left: 1rem; font-size: 1.2875rem; color: #333333; display: inline-block; width: calc(100% - 6em); vertical-align: top; line-height: 1.6rem; }
 #afterSalesState .system-box { position: fixed; left: 0; right: 0; bottom: 0; background-color: white; display: block; padding: 1.25rem 1.5rem; text-align: right; }
-#afterSalesState .system-box a.order.button { font-size: 1.19rem; display: inline-block; height: 2.5rem; line-height: 2.5rem; border: 1px double #939393; padding: 0 1rem; border-radius: .25rem; font-weight: 100; }
+#afterSalesState .system-box a.order.button { font-size: 1.19rem; display: inline-block; height: 2.5rem; line-height: 2.5rem; border: .1px double #333; color: #333; padding: 0 1rem; border-radius: .25rem; font-weight: 300; }
 #afterSalesState .system-box a.order.button.active { color: #ff4242; border-color: #ff4242; }
 #afterSalesState .system-box a.order.button~a.order.button { margin-left: .75rem; }
 </style>

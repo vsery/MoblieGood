@@ -50,20 +50,22 @@
 				</div>
 				<div class="img-upload">
 					<ul class="clearfix">
-						<li v-for="(item,index) in imgArr" v-if="imgArr[index]">
+						<li v-for="(item,index) in imgArr" v-if="imgArr[index]" :style="{height:liWidth}">
 							<img :src="item.imgUrl" />
 							<div class="u-del" @click="liRemove(index)">一</div>
 						</li>
-						<li class="add-upload" @click="openAction">
-							<p class="iconBox"><i class="iconfont icon-zhaoxiangji"></i></p>
-							<p>添加照片</p>
+						<li class="add-upload" @click="openAction" :style="{height:liWidth}">
+							<div class="box">
+								<p class="iconBox"><i class="iconfont icon-zhaoxiangji"></i></p>
+								<p>添加照片</p>
+							</div>
 						</li>
 					</ul>
 				</div>
 				<button class="u-submit">提交</button>
 			</div>
 			<mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
-			<el-upload
+			<!--<el-upload
 			  action="https://jsonplaceholder.typicode.com/posts/"
 			  list-type="picture-card"
 			  :on-preview="handlePictureCardPreview"
@@ -72,7 +74,7 @@
 			</el-upload>
 			<el-dialog :visible.sync="dialogVisible" size="tiny">
 			  <img width="100%" :src="dialogImageUrl" alt="">
-			</el-dialog>
+			</el-dialog>-->
 		</div>
 	</div>
 </template>
@@ -83,6 +85,7 @@
 		name: 'opinion',
 		data() {
 			return {
+				liWidth: '',
 				sheetVisible: false,
 				actions: [{
 						name: '拍照',
@@ -125,6 +128,7 @@
 		},
 		mounted() {
 			document.title = '意见反馈';
+			this.liWidth = document.querySelector('.ct-bd .img-upload ul li').offsetWidth + 'px';
 		},
 		methods: {
 			openAction() {
@@ -143,14 +147,14 @@
 				console.log(index);
 				this.imgArr.splice(index, 1);
 			},
-			handleRemove(file, fileList) {
-				console.log(file, fileList);
-			},
-			handlePictureCardPreview(file) {
-				console.log(file);
-				this.dialogImageUrl = file.url;
-				this.dialogVisible = true;
-			}
+			//			handleRemove(file, fileList) {
+			//				console.log(file, fileList);
+			//			},
+			//			handlePictureCardPreview(file) {
+			//				console.log(file);
+			//				this.dialogImageUrl = file.url;
+			//				this.dialogVisible = true;
+			//			}
 		}
 	}
 </script>
@@ -170,6 +174,7 @@
 		height: 8.75rem;
 		background-color: #ff4c42;
 		padding: 2rem 0 2rem 2.6rem;
+		text-align: right;
 	}
 	
 	.content .ct-hd .img-box {
@@ -252,8 +257,8 @@
 		width: 2rem;
 		text-align: center;
 		height: 2rem;
-		line-height: 3.3rem;
-		font-size: 0.4rem;
+		line-height: 3.5rem;
+		font-size: 1rem;
 		color: #fff;
 		background-color: #ff4342;
 		-webkit-transform: rotateZ(-45deg);
@@ -280,12 +285,17 @@
 		border-color: rgba(255, 255, 255, 0);
 	}
 	
+	.ct-bd .textarea-box textarea:focus {
+		color: #333;
+	}
+	
 	.ct-bd .textarea-box span {
 		position: absolute;
 		bottom: 0.58rem;
 		right: 0.58rem;
 		background-color: #fff;
 		font-size: 1rem;
+		color: #999;
 	}
 	
 	.ct-bd .img-upload ul {
@@ -295,15 +305,14 @@
 	.ct-bd .img-upload ul li {
 		position: relative;
 		float: left;
-		width: 7rem;
-		height: 7rem;
+		width: 23.5%;
 		border-radius: 0.5rem;
-		margin-right: 1.3rem;
+		margin-right: 2%;
 		margin-bottom: 1.6rem;
 		text-align: center;
 	}
 	
-	.ct-bd .img-upload ul li:last-child {
+	.ct-bd .img-upload ul li:nth-child(4n+0) {
 		margin-right: 0;
 	}
 	
@@ -317,12 +326,12 @@
 	
 	.ct-bd .img-upload ul li .u-del {
 		position: absolute;
-		top: -0.8rem;
-		right: -0.8rem;
-		width: 1.6rem;
-		height: 1.6rem;
-		line-height: 1.6rem;
-		font-weight: bold;
+		top: -5px;
+		right: -5px;
+		width: 15px;
+		height: 15px;
+		line-height: 15px;
+		text-align: center;
 		color: #fff;
 		background-color: #ff4342;
 		border-radius: 50%;
@@ -330,19 +339,22 @@
 	}
 	
 	.ct-bd .img-upload ul li.add-upload {
+		display: table;
 		box-sizing: border-box;
 		border: 0.1rem dashed #e8e8e8;
-		padding: 1.42rem 0;
 		color: #999;
 	}
 	
+	.add-upload .box {
+		display: table-cell;
+	   text-align: center;
+	   vertical-align: middle;
+	}
 	.add-upload .iconBox i {
-		line-height: 2.5rem;
 		font-size: 3rem;
 	}
 	
 	.add-upload p {
-		line-height: 1.6rem;
 		font-size: 1.1rem;
 	}
 	

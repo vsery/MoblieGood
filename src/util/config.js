@@ -11,6 +11,7 @@ Vue.prototype.onGood = {
 
 Vue.prototype.clientH = document.documentElement.clientHeight * 0.1;
 
+Vue.prototype.baseUrl= 'http://domain.name:8081/';
 /* 配置参数 END */
 
 

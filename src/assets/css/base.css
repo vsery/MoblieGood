@@ -1,4 +1,33 @@
+/* 最大宽度 */
+@media screen and ( min-width: 54rem) {
+    body {
+        width: 54rem;
+        margin: 0 auto;
+    }
+    #app {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .index,
+    .banner {
+    	width: 54rem !important;
+    	left: calc(50% - 27rem) !important;
+    	margin: 0 auto !important;
+    }
+    .header-bar,
+    .header-bar .nav {
+    	width: calc(54rem - 2.6rem) !important;
+    	left: calc(50% - 27rem) !important;
+    	margin: 0 auto !important;
+    }
+}
 /* 基础样式 */
+input {
+	-webkit-appearance: none;
+}
+textarea {  
+	-webkit-appearance: none;
+}   
 input,
 button {
 	outline: none;
@@ -13,19 +42,36 @@ button {
 	left: initial;
 	right: 1.8rem;
 }
+.banner .mint-swipe-indicator {
+	width: 0.6rem;
+	height: 0.6rem;
+	margin-right: 0.6rem;
+}
+.product-img .mint-swipe-indicator {
+	width: 0.7rem;
+	height: 0.7rem;
+	margin-right: 1.5rem;
+}
 .banner .mint-swipe-indicator,
 .product-img .mint-swipe-indicator {
-	width: 0.5rem;
-	height: 0.5rem;
-	border: 0.1rem solid #fff;
+	border: 0.05rem solid #fff;
 	opacity: 1;
 	border-radius: 0.2rem;
 	background: transparent;
+	box-sizing: border-box;
+}
+.banner .mint-swipe-indicator.is-active {
+	width: 0.7rem;
+	height: 0.7rem;
+}
+.product-img .mint-swipe-indicator.is-active {
+	width: 0.7rem;
+	height: 0.7rem;
 }
 .banner .mint-swipe-indicator.is-active,
 .product-img .mint-swipe-indicator.is-active {
 	background: #e93b3d;
-	border: 0.1rem solid #e93b3d;
+	border: 0.05rem solid #e93b3d;
 }
 /* banner END */
 
@@ -39,7 +85,7 @@ button {
 .forgetPwd .mint-cell {
 	min-height: 3.8rem;
 	border-radius: 0.3rem;
-	border: 0.1rem solid #a8a8a8;
+	border: 0.05rem solid #a8a8a8;
 }
 .mint-cell-wrapper {
 	font-size: 1.3rem;
@@ -48,7 +94,7 @@ button {
 .mint-cell-allow-right::after {
 	width: 0.6rem;
 	height: 0.6rem;
-    border: solid 0.1rem #666;
+    border: solid 0.05rem #666;
     border-bottom-width: 0;
     border-left-width: 0;
 }
@@ -58,3 +104,4 @@ button {
     background: none;
 }
 /* 基础样式 END */
+

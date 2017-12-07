@@ -1,6 +1,6 @@
 <!-- 支付成功 -->
 <template>
-    <div class="buySuccess">
+    <div class="buySuccess" :style="{minHeight: (clientH + 3.7) + 'rem'}">
     	<div class="header">
     		<header-bar></header-bar>
     	</div>
@@ -18,14 +18,12 @@
     			<span class="fr">￥230.00</span>
     		</div>
     		<div class="cell-item">
-    			<span>
-    				积分抵扣:
-    				<label>￥198.00</label>
-    			</span>
-    			<span class="fr">
-    				<i>消耗:</i>
-    				<label>235.66积分</label>
-    			</span>
+    			<span>积分抵扣:</span>
+    			<span class="fr">￥198.00</span>
+    		</div>
+    		<div class="cell-item">
+    			<span>消耗:</span>
+    			<span class="fr">235.66积分</span>
     		</div>
     	</div>
     	<div class="btm">
@@ -76,6 +74,7 @@ export default {
 	padding: 1.6rem 2.1rem 0.5rem 2.1rem;
 	background: #fff;
 	box-shadow: 0 0.3rem 1.0rem 0 rgba(0, 0, 0, 0.08);
+	border-radius: 0.3rem;
 }
 .nav .icon {
 	text-align: center;
@@ -126,16 +125,24 @@ export default {
 	font-weight: bold;
 }
 .btm .btn button {
-	padding: 1.5rem 4.0em;
+	width: 40%;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	/*padding: 1.5rem 4.0em;*/
 	border-radius: 0.5rem;
 	border: 0.1rem solid #666;
-	background: #fff;	
+	background: #f4f4f4;	
 	color: #333;
 	font-size: 1.4rem;
-	margin: 0.2rem;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+.btm .btn button:first-child {
+	margin-right: 4%;
 }
 .btm .btn button:last-child {
 	border: 0.1rem solid #e93b3d;
 	color: #e93b3d;
+	margin-left: 4%;
 }
 </style>

@@ -16,7 +16,7 @@
 	    		<button @click="handleBind">确认绑定</button>
 	    	</div>
 	    	<div class="login">
-	    		<span>直接登录</span>
+	    		<span @click="$router.push('/login')">直接登录</span>
 	    	</div>
     	</div>
     	<div class="btm">
@@ -79,6 +79,7 @@ export default {
 	background: #fff;
 	color: #666;
 	box-sizing: border-box;
+	font-size: 1.3rem;
 }
 .nav > .btn {
 	height: 4.4rem;
@@ -107,11 +108,11 @@ export default {
 	width: 81%;
 	font-size: 1.3rem;
 	color: #a8a8a8;
-	line-height: 1.8rem;
+	line-height: 2.0rem;
 	margin: 0 auto;
 }
 .btm > p > span {
-	color: #333;
+	color: #4d4d4d;
 	text-decoration: underline;
 }
 </style>

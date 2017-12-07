@@ -38,6 +38,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 @media screen and (min-width:432px) and (max-width:479px) and (orientation:portrait){
     html,body { font-size: 74.3%; }
 }
+@media screen and (min-width:480px) and (orientation:portrait){
+    html,body { font-size: 76%; }
+}
 /*@media screen and (min-width:360px) and (max-width:374px) and (orientation:portrait) {
     html { font-size: 70.3%; }
 }
@@ -82,3 +85,6 @@ li { list-style: none; }
 ::-webkit-scrollbar-thumb:horizontal { width: 5px; background-color: rgba(125, 125, 125, 0.7); -webkit-border-radius: 6px; }
 html, body { width: 100%; }
 body { -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+.mint-msgbox-content,
+.mint-msgbox-cancel {border-width: .1px; }
+.mint-msgbox-cancel, .mint-msgbox-confirm { font-size: 1.3rem; }

@@ -34,6 +34,11 @@ import Collect from '@/components/my/collect/collect' // 我的 => 个人收藏
 import MyIntegral from '@/components/my/integral/integral' // 我的 => 个人收藏
 import MyTrace from '@/components/my/trace/trace' // 我的 => 个人收藏
 
+import changePhone from '@/components/my/setting/changePhone/changePhone' // 我的 => 变更手机号
+import loginPassword from '@/components/my/setting/loginPassword/resetLoginPassword' // 我的 => 重置登录密码
+import setPayPassword from '@/components/my/setting/payPassword/setPayPassword' // 我的 => 设置/重置支付密码
+
+
 import OrderList from '@/components/my/order/orderList' // 我的 => 订单列表
 import OrderInfo from '@/components/my/order/orderInfo' // 我的 => 订单详情
 import OrderAppraise from '@/components/my/order/orderAppraise' // 我的 => 订单详情 => 评价
@@ -80,7 +85,7 @@ let router = new Router({
         { path: '/register',name: 'Register',title: '注册',component: Register},
 	    { path: '/registerSuccess',name: 'registerSuccess',title: '注册成功',component: registerSuccess},
         { path: '/bindMobile', name: 'BindMobile', component: BindMobile },
-        { path: '/forgetPwd', name: 'ForgetPwd', title: '忘记密码', component: ForgetPwd },
+        { path: '/forgetPwd', name: 'ForgetPwd', title: '忘记密码', component: ForgetPwd },	
         
         { path: '/pdDetails', name: 'PdDetails', title: '商品详情', component: PdDetails },
         { path: '/joinCart', name: 'JoinCart', title: '加入购物车', component: JoinCart },
@@ -110,6 +115,10 @@ let router = new Router({
                 { path: '/userCollect', name: 'MyCollect', title: '我的收藏', component: Collect },
                 { path: '/userIntegral', name: 'MyIntegral', title: '我的积分', component: MyIntegral },
 				{ path: '/userTrace', name: 'MyTrace', title: '我的足迹', component: MyTrace },
+				
+				{ path: '/changePhone', name: 'changePhone', title: '变更手机号', component: changePhone },
+				{ path: '/loginPassword', name: 'loginPassword', title: '重置登陆密码', component: loginPassword },
+				{ path: '/setPayPassword', name: 'setPayPassword', title: '设置支付密码', component: setPayPassword },
 
                 { path: '/userOrderList', name: 'MyOrderList', title: '我的订单', component: OrderList },
                 { path: '/userOrderInfo', name: 'MyOrderInfo', title: '我的订单详情', component: OrderInfo },

@@ -11,8 +11,8 @@
 				<div class="logistics_box_content">
 					<a :href="logistic.link">
 						<div class="logistics_box_status">
-							<p>
-								<template v-if="logistic.status=='订单已签收'">
+							<p :class="logistic.statusColor">{{logistic.status}}
+								<!--<template v-if="logistic.status=='订单已签收'">
 									<span class="red">订单已签收</span>
 								</template>
 								<template v-else-if="logistic.status=='订单派送中'">
@@ -20,7 +20,7 @@
 								</template>
 								<template v-else>
 									<span class="blue">订单已发货</span>
-								</template>
+								</template>-->
 								
 							</p><span>{{logistic.express}}</span>
 						</div>
@@ -57,15 +57,15 @@
   data () {
     return {
      logistics:[
-     {'time':'2017-11-26 13:45','link':'#','status':'订单已签收','express':'邮政快递小包',
+     {'time':'2017-11-26 13:45','link':'#','status':'签收','express':'邮政快递小包','statusColor':'',
      'img':'../../src/components/msg/img/logistics1.png',
      'title':'秋冬新款纯色中长款针织衫宽松显瘦开衫时尚开叉外套女士韩版白搭',
      'number':'89225868408761257'},
-     {'time':'2017-11-5 9:45','link':'#','status':'订单派送中','express':'申通快递',
+     {'time':'2017-11-5 9:45','link':'#','status':'派送','express':'申通快递','statusColor':'',
      'img':'../../src/components/msg/img/logistics2.png',
-     'title':'羊毛呢大衣女2017秋冬款新款韩版百搭加厚中长款呢子外套',
+     'title':'羊毛呢大衣女2017秋冬款新款韩版百搭加厚中长款呢子外套羊毛呢大衣女2017秋冬款新款韩版百搭加厚中长款呢子外套',
      'number':'89225868408764578'},
-     {'time':'2017-10-23 15:45','link':'#','status':'订单已发货','express':'圆通速递',
+     {'time':'2017-10-23 15:45','link':'#','status':'已发货','express':'圆通速递','statusColor':'',
      'img':'../../src/components/msg/img/logistics3.png',
      'title':'不锈钢中式家用厨房刀具切片刀 厨师切菜刀切肉持久锋利',
      'number':'89225868408763256'},
@@ -73,10 +73,21 @@
     }
   },
   mounted(){
-  	for (var i = 0; i< this.logistics.length; i++) {
-  		
+  	console.log(this.statusColor)
+  	for(let i=0;i<this.logistics.length;i++){
+  		if(this.logistics[i].status.indexOf("签收")!=-1){
+  			
+  			this.logistics[i].status="订单已签收";this.logistics[i].statusColor='red';
+  		}
+  		else if(this.logistics[i].status.indexOf("派送")!=-1){
+  			this.logistics[i].status="订单派送中";this.logistics[i].statusColor='green';
+  		}
+  		else{
+  			this.logistics[i].status="订单已发货";this.logistics[i].statusColor='blue';
+  		}
   	}
-  }
+  	
+  },
 }
 </script>
 
@@ -91,12 +102,12 @@
 				margin-bottom: 1.6rem;
 			}
 			.line{
-				height: 2px;
+				height: 0.1rem;
 				width: 37.5rem;
 				background: #ebebeb;
-				position: absolute;
-				left: -1.5rem;
-				bottom: 0;
+				position: fixed;
+				left: 0;
+				top: 3.7rem;
 			}
 			/*物流通知start*/
 			#LogisticsNotification{
@@ -146,13 +157,13 @@
 				min-width: 9.5rem;
 				font-size: 1.6rem;
 			}
-			#LogisticsNotification .logistics_box_status p .red{
+			#LogisticsNotification .logistics_box_status  .red{
 				color: #ff5a00;
 			}
-			#LogisticsNotification .logistics_box_status p .green{
+			#LogisticsNotification .logistics_box_status  .green{
 				color: #01a33a;
 			}
-			#LogisticsNotification .logistics_box_status p .blue{
+			#LogisticsNotification .logistics_box_status  .blue{
 				color: #0078ff;
 			}
 			#LogisticsNotification .logistics_box_status>span {
@@ -163,7 +174,7 @@
 				min-width: 4rem;
 				padding: 0 1rem;
 				text-align: center;
-				border: solid 0.1rem #999999;
+				border: solid 0.1rem #ccc;
 				border-radius: 0.6rem;
 				color: #333333;			
 			}

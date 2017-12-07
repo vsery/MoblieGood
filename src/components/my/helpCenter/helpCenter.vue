@@ -114,12 +114,11 @@
 	}
 	.content .ct-bd {
 		background-color: #F5F5F5;
-		padding-top: 0.83rem;
+		padding: 0.83rem 0;
 	}
 	.content .ct-bd .help-item {
 	 	margin-bottom: 0.84rem;
 	 	width: 100%;
-		/*height: 9.4rem;*/
 		text-align: center;
 		background-color: #fff;
 	}

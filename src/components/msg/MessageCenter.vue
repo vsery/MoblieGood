@@ -14,6 +14,7 @@
 					<div class="message_box_content clearfix">
 						<h3>商城活动<span>{{salesTime}}</span></h3>
 						<p>{{salesTitle}}</p>
+						<i></i>
 					</div>
 				</div>
 			</router-link>
@@ -26,6 +27,7 @@
 					<div class="message_box_content clearfix">
 						<h3>物流通知<span>2017-05-10&nbsp;17:12</span></h3>
 						<p>显示最近一条活动推送的标题</p>
+						<i></i>
 					</div>
 				</div>
 			</router-link>
@@ -38,6 +40,7 @@
 					<div class="message_box_content clearfix">
 						<h3>商城公告<span>2017-05-10&nbsp;17:12</span></h3>
 						<p>显示最近一条活动推送的标题</p>
+						<i></i>
 					</div>
 				</div>
 			</router-link>
@@ -49,7 +52,8 @@
 					</div>
 					<div class="message_box_content clearfix">
 						<h3>通知消息<span>2017-05-10&nbsp;17:12</span></h3>
-						<p>显示最近一条活动推送的标题</p>
+						<p>显示最近一条活动推送的标题显示最近一条活动推送的标题显示最近一条活动推送的标题</p>
+						<i></i>
 					</div>
 				</div>
 			</router-link>
@@ -62,6 +66,7 @@
 					<div class="message_box_content clearfix">
 						<h3>在线客服</h3>
 						<p>显示最近一条活动推送的标题</p>
+						<i></i>
 					</div>
 				</div>
 			</a>
@@ -98,12 +103,12 @@ export default {
 				position: relative;
 			}
 			.line{
-				height: 2px;
+				height: 0.1rem;
 				width: 37.5rem;
 				background: #ebebeb;
-				position: absolute;
-				left: -1.5rem;
-				bottom: 0;
+				position: fixed;
+				left: 0;
+				top: 3.7rem;
 			}
 			/*消息中心start*/
 			#MessageCenter {
@@ -166,15 +171,25 @@ export default {
 				font-size: 1.2rem;
 				float: right;
 				height: 2rem;
-				line-height: 2rem;
+				line-height: 1.3rem;
 				color: #999;
 			}
 			
 			#MessageCenter .message_box_content p {
-				padding-bottom: 1.3rem;
 				margin-top: 1rem;
 				font-size: 1.3rem;
 				color: #666;
+				height: 1.5rem;
+				line-height: 1.7rem;
+				/*文字溢出*/
+				display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;
+			}
+			#MessageCenter .message_box_content i{
+				display: block;
+				height: 1.5rem;
 				border-bottom: 0.1rem solid #e5e5e5;
 			}
 			/*消息中心end*/

@@ -1,18 +1,18 @@
 <!-- 订单评价 -->
 <template>
     <div id="orderAppraise" :style="{height:bodyHeight}">
-        <div class="order-box" v-if="order!=null">
+        <div ref="orderBox" class="order-box" v-if="order!=null">
             <div class="cover"><img :src="order.cover" alt=""></div>
             <div class="order-name">{{order.name}}</div>
         </div>
-        <div class="appraise-box">
+        <div ref="appraiseBox" class="appraise-box">
             <editdiv-view id='appraiseText' ref="appraiseText" v-model='appraiseText'></editdiv-view>
             <div class="number-box">{{appraiseTextInput}}/{{appraiseTextLength}}</div>
             <div class="buttom-box">
                 <div class="image" v-if="imageVisible">
                     <div class="imageUrl" v-for="img,index in imageList" :key="index">
                         <div class="delImage" @click="delImage(index)">-</div>
-                        <img :src="img.src" alt="">
+                        <div class="showimg"><img :src="img.src" alt=""></div>
                     </div>
                 </div>
                 <el-upload
@@ -26,7 +26,7 @@
                 </el-upload>
             </div>
         </div>
-        <div class="stars-box" v-if="isNew">
+        <div ref="starsBox" class="stars-box" v-if="isNew">
             <label for="">商品评价</label>
             <ul class="star">
                 <li v-for="n, index in 5" @click="selectedStar(index)" :class="index>star?'':'active'">
@@ -39,7 +39,7 @@
                 </li>
             </ul>
         </div>
-        <div class="footer-box"><a href="javascript:;" class="action" @click="action">提交评价</a></div>
+        <div class="footer-box" :style="{height:FH}"><a href="javascript:;" class="action" @click="action">提交评价</a></div>
     </div>
 </template>
 <script>
@@ -58,6 +58,8 @@ export default {
             pageQuery: null,
             isNew: false,
             bodyHeight: document.documentElement.clientHeight + 'px',
+            BH: document.documentElement.clientHeight,
+            FH: '',
             order: null,
             appraiseText: '',
             appraiseTextInput: 0,
@@ -68,15 +70,21 @@ export default {
     },
     watch: {
         appraiseText: function(val, oldVal) {
-            console.log(val);
+            // console.log(val);
             this.appraiseTextInput = this.getStringLen(val);
         }
     },
     mounted() {
         this.pageQuery = this.$route.query;
         this.getOrder();
+        this.$nextTick(function() {
+            this.setHeight();
+        });
     },
     methods: {
+        setHeight(){
+            this.FH=(this.BH-this.$refs.orderBox.offsetHeight-this.$refs.appraiseBox.offsetHeight-this.$refs.starsBox.offsetHeight-15)+'px';
+        },
         /**
          * 获取订单
          * @return {[type]} [description]
@@ -134,9 +142,9 @@ export default {
          */
         clearAppraiseHtml(temp) {
             if (this.appraiseText == '分享你的购买心得吧' || this.appraiseText === '亲，有什么需要追加的评价么？') {
-                console.log(this.appraiseText);
+                // console.log(this.appraiseText);
                 this.appraiseText = '';
-                console.log(this.appraiseText);
+                // console.log(this.appraiseText);
                 this.$refs.appraiseText.innerHTML = '';
             }
             if (temp == 'action') { this.appraiseText = '' }
@@ -215,26 +223,27 @@ export default {
 #orderAppraise .order-box:after { content: ''; clear: both; display: block; }
 #orderAppraise .order-box .cover { width: 2.5rem; height: 2.5rem; overflow: hidden; border-radius: .25rem; display: inline-block; }
 #orderAppraise .order-box .cover img { width: 100%; min-height: 100%; height: auto; }
-#orderAppraise .order-box .order-name { display: inline-block; width: calc(100% - 2.6rem); float: right; line-height: 1.25rem; padding-left: 1rem; overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+#orderAppraise .order-box .order-name { font-size: 1.2875rem; display: inline-block; width: calc(100% - 2.6rem); float: right; line-height: 1.35rem; padding-left: 1rem; overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 #orderAppraise .appraise-box { background-color: white; height: 20.5rem; width: 100%; position: relative; padding: 1rem; }
 #orderAppraise .appraise-box #appraiseText { position: absolute; z-index: 2; left: 1rem; top: 1rem; right: 1rem; bottom: 8rem; }
 #orderAppraise .appraise-box .number-box { position: absolute; z-index: 2; right: 2rem; bottom: 9rem; background-color: transparent; font-size: 1rem; color: #999999; }
-#orderAppraise .appraise-box .buttom-box { position: absolute; z-index: 2; left: 1rem; bottom: 1rem; width: auto; height: auto; border-radius: .5rem; border: 1px dotted #ececec; }
+#orderAppraise .appraise-box .buttom-box { position: absolute; z-index: 2; left: 1rem; bottom: 1rem; width: auto; height: auto; border-radius: .5rem; }
 #orderAppraise .appraise-box .buttom-box .image { width: auto; height: 6rem; display: inline-block; vertical-align: top; }
 #orderAppraise .appraise-box .buttom-box .image .imageUrl { display: inline-block; width: 6rem; height: 6rem; margin-right: 1rem; position: relative; }
-#orderAppraise .appraise-box .buttom-box .image .imageUrl .delImage { position: absolute; width: 1rem; height: 1rem; line-height: .75rem; font-size: 2rem; font-weight: 500; vertical-align: middle; right: -.35rem; top: -.35rem; background-color: #ff4242; color: white; border-radius: 50%; text-align: center; }
-#orderAppraise .appraise-box .buttom-box .image .imageUrl img { width: 100%; min-height: 100%; height: auto; border-radius: .5rem; overflow: hidden; }
-#orderAppraise .appraise-box .buttom-box .avatar-uploader { display: inline-block; vertical-align: top; height: 6rem;}
-#orderAppraise .appraise-box .buttom-box .el-upload { width: 6rem; height: 6rem; display: block; text-align: center; position: relative; }
-#orderAppraise .appraise-box .buttom-box .el-upload i.icon { margin: .5rem auto .25rem; color: #999999; display: block; font-size: 3rem; }
+#orderAppraise .appraise-box .buttom-box .image .imageUrl .delImage { position: absolute; width: 1.5rem; height: 1.5rem; line-height: 1.25rem; font-size: 2rem; font-weight: 500; vertical-align: middle; right: -.35rem; top: -.35rem; background-color: #ff4242; color: white; border-radius: 50%; text-align: center; }
+#orderAppraise .appraise-box .buttom-box .image .imageUrl .showimg{ width: 100%; height: 100%; overflow: hidden; }
+#orderAppraise .appraise-box .buttom-box .image .imageUrl img { max-width: 100%; width: auto; min-height: 100%; height: auto; border-radius: .5rem; }
+#orderAppraise .appraise-box .buttom-box .avatar-uploader { border: 1px dotted #ececec; border-radius: .5rem; width: 6rem; display: inline-block; vertical-align: top; height: 6rem; overflow: hidden; position: relative; }
+#orderAppraise .appraise-box .buttom-box .el-upload { width: 6rem; height: 6rem; display: block; text-align: center; position: absolute; top: 0; }
+#orderAppraise .appraise-box .buttom-box .el-upload i.icon { margin: .5rem auto .25rem; color: #999999; display: block; font-size: 3rem; height: 3rem; }
 #orderAppraise .appraise-box .buttom-box .el-upload input.el-upload__input { display: none; }
-#orderAppraise .appraise-box .buttom-box .el-upload span { text-align: center; width: 100%; display: block; color: #999999; font-size: 1.2rem; }
+#orderAppraise .appraise-box .buttom-box .el-upload span { text-align: center; width: 100%; display: block; color: #999999; font-size: 1.1rem; line-height: normal; }
 #orderAppraise .stars-box { margin-top: 1rem; height: 4.5rem; line-height: 2.5rem; padding: 1rem; background-color: white; }
-#orderAppraise .stars-box label { font-size: 1.275rem; color: #333333; font-weight: 500; display: inline-block; letter-spacing: .1rem;}
+#orderAppraise .stars-box label { font-size: 1.275rem; color: #333333; display: inline-block; letter-spacing: .1rem;}
 #orderAppraise .stars-box .star { display: inline-block; vertical-align: top; height: 2.5rem; line-height: 2.5rem; }
 #orderAppraise .stars-box .star li { float: left; display: inline-block; vertical-align: top; margin-left: 1rem; }
-#orderAppraise .stars-box .star li i.icon { font-size: 2rem; color: #bebebe; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s; }
+#orderAppraise .stars-box .star li i.icon { font-size: 2.4rem; color: #bebebe; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s; }
 #orderAppraise .stars-box .star li.active i.icon { color: #ff4242; }
-#orderAppraise .footer-box { position: fixed; left: 1.5rem; right: 1.5rem; bottom: 1rem; }
-#orderAppraise .footer-box a.action { width: 100%; height: 4rem; line-height: 4rem; text-align: center; color: white; background-color: #ff4242; border-radius: .5rem; display: block; font-size: 1.2rem; }
+#orderAppraise .footer-box { position: relative; margin-left: 1.5rem; margin-right: 1.5rem; }
+#orderAppraise .footer-box a.action { position: absolute; bottom: 1rem; width: 100%; height: 4rem; line-height: 4rem; text-align: center; color: white; background-color: #ff4242; border-radius: .5rem; display: block; font-size: 1.5625rem; }
 </style>

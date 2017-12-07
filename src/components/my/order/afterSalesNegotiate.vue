@@ -104,6 +104,7 @@ export default {
 #afterSalesNegotiate .negotiates-list .negotiate-desc { width: 100%; }
 #afterSalesNegotiate .negotiates-list .negotiate-desc:after { content: ''; clear: both; display: block; }
 #afterSalesNegotiate .negotiates-list .negotiate-desc .item { width: 100%; float: left; color: #333333; font-size: 1.2rem; line-height: 2rem; }
-#afterSalesNegotiate .negotiates-list .negotiate-desc .item span { vertical-align: bottom; color: #333333; font-size: 1.2rem; line-height: 2rem; font-weight: 500; }
+#afterSalesNegotiate .negotiates-list .negotiate-desc .item span { vertical-align: bottom; color: #333333; font-size: 1.2rem; line-height: 2rem; }
+#afterSalesNegotiate .negotiates-list .negotiate-desc .item span.val { font-weight: 500; }
 #afterSalesNegotiate .negotiates-list .negotiate-desc .item span~span { margin-left: .5rem; }
 </style>

@@ -41,6 +41,54 @@
 					</div>
 				</div>
 			</div>
+			<div class="comment-item">
+				<div class="account">
+					<img src="./img/photo.png" />
+					<h3>静***笑<img src="./img/grade1.png" class="grade"/></h3>
+				</div>
+				<div class="info">
+					2017/11/17  松柏绿; 1.2M(三件套传床单款)
+				</div>
+				<div class="con">
+					<div class="con-text">非常好看，手感也很好，第一次在网易严选上买东西，棉质不错，很喜欢 还会在买几套。</div>
+					<div class="con-img">
+						<img src="./img/img02.png" />
+						<img src="./img/img03.png" />
+					</div>
+				</div>
+			</div>
+			<div class="comment-item">
+				<div class="account">
+					<img src="./img/photo.png" />
+					<h3>静***笑<img src="./img/grade1.png" class="grade"/></h3>
+				</div>
+				<div class="info">
+					2017/11/17  松柏绿; 1.2M(三件套传床单款)
+				</div>
+				<div class="con">
+					<div class="con-text">非常好看，手感也很好，第一次在网易严选上买东西，棉质不错，很喜欢 还会在买几套。</div>
+					<div class="con-img">
+						<img src="./img/img02.png" />
+						<img src="./img/img03.png" />
+					</div>
+				</div>
+			</div>
+			<div class="comment-item">
+				<div class="account">
+					<img src="./img/photo.png" />
+					<h3>静***笑<img src="./img/grade1.png" class="grade"/></h3>
+				</div>
+				<div class="info">
+					2017/11/17  松柏绿; 1.2M(三件套传床单款)
+				</div>
+				<div class="con">
+					<div class="con-text">非常好看，手感也很好，第一次在网易严选上买东西，棉质不错，很喜欢 还会在买几套。</div>
+					<div class="con-img">
+						<img src="./img/img02.png" />
+						<img src="./img/img03.png" />
+					</div>
+				</div>
+			</div>
 		</div>
     </div>
 </template>

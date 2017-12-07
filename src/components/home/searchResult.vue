@@ -4,8 +4,8 @@
     	<div class="operate">
     		<i class="iconfont">&#xe616;</i>
     		<input type="text" placeholder="升级保温杯" v-model="searchText"  @keydown="handleSearch($event)" />
-    		<span v-if="searchText ==''">取消</span>
-    		<span v-else @click="handleSearch">搜索</span>
+    		<!--<span v-if="searchText ==''">取消</span>-->
+    		<span @click="handleSearch">搜索</span>
     	</div>
     	<div class="nav">
     		<div class="nav-con">
@@ -94,7 +94,8 @@ export default {
 .operate >i.iconfont {
 	position: absolute;
 	left: 2.6rem;
-	top: 0.8rem;
+	top: 1.0rem;
+	font-size: 1.4rem;
 }
 .operate > input[type=text] {
 	width: 85%;
@@ -102,6 +103,7 @@ export default {
 	background: #ededed;
 	border-radius: 0.5rem;
 	padding-left: 3.3rem;
+	font-size: 1.5rem;
 }
 .operate > span {
 	float: right;

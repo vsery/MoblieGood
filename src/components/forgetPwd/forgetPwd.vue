@@ -5,11 +5,12 @@
     		<div class="active">
     			<i>1</i>
     			<p>验证身份</p>
+    			<div class="line"></div>
     		</div>
-    		
     		<div :class="{'active': step2 || (!step1 && !step2)}">
     			<i>2</i>
     			<p>修改登录密码</p>
+    			<div class="line"></div>
     		</div>
     		<div :class="{'active': step3}">
     			<i>3</i>
@@ -21,7 +22,7 @@
     		<div class="input-group">
     			<mt-field placeholder="请输入手机号" type="tel" v-model="phone"></mt-field>
     			<div class="code-group">
-		    		<mt-field placeholder="请输入验证码" type="number" v-model="code" class="input-code"></mt-field>
+		    		<mt-field placeholder="请输入验证码" type="text" v-model="code" class="input-code"></mt-field>
 		    		<button class="btn-send">获取验证码</button>
 	    		</div>
     		</div>
@@ -112,7 +113,7 @@ export default {
 	width: 24%;
 	color: #b3b3b3;
 	font-size: 1.1rem;
-	margin: 0 6%;
+	margin: 0 5%;
 	background: #fff;
 }
 .step > div:first-child {
@@ -121,21 +122,34 @@ export default {
 .step > div:last-child {
 	margin-right: 0;
 }
-.step > div:after {
+.step > div > .line {
+	position: absolute;
+	left: 87%;
+	top: 1.0rem;
+	width: 5.0rem;
+	height: 0.1rem;
+	background: #b3b3b3;
+	z-index: 10;
+}
+.step > div.active > .line {
+	background: #e93b3d;
+}
+/*.step > div:after {
 	position: absolute;
 	top: 0.6rem;
-	left: 5.0rem;
-	content: '—————';
+	left: 6.2rem;
+	content: '————';
 	z-index: 1;
 }
 .step > div:last-child:after {
 	content: '';
 }
-.step > div.active i {
-	background: #e93b3d;
-}
 .step > div.active:after {
 	color: #e93b3d;
+}
+*/
+.step > div.active i {
+	background: #e93b3d;
 }
 .step > div.active > p{
 	color: #333;

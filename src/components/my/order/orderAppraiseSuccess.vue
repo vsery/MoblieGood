@@ -70,7 +70,7 @@ export default {
 <style>
 #orderAppraiseSuccess { background-color: white; }
 #orderAppraiseSuccess * { box-sizing: border-box; }
-#orderAppraiseSuccess .success-box { width: 100%; height: 11.25rem; overflow: hidden; background-image: -webkit-linear-gradient(to right, #ff5d42, #ff4242); background-image: linear-gradient(to right, #ff5d42, #ff4242); }
+#orderAppraiseSuccess .success-box { width: 100%; height: 11.25rem; overflow: hidden; background-image: -webkit-linear-gradient(left, #ff5d42, #ff4242); background-image: -o-linear-gradient(left, #ff5d42, #ff4242); background-image: linear-gradient(to right, #ff5d42, #ff4242); }
 #orderAppraiseSuccess .success-box .thanks { margin-top: 2rem; }
 #orderAppraiseSuccess .success-box .thanks,
 #orderAppraiseSuccess .success-box .help-text { text-align: center; color: white; font-size: 1.2875rem; line-height: 2rem; }
@@ -79,7 +79,7 @@ export default {
 #orderAppraiseSuccess .success-box .callback-box { margin-top: 1rem; }
 #orderAppraiseSuccess .success-box .callback { font-size: 1.2rem; width: 8.5rem; height: 2.5rem; line-height: 2.4rem; text-align: center; color: #fff600; border: 1px double #fff600; border-radius: .5rem; display: inline-block; }
 #orderAppraiseSuccess .success-box .callback~.callback { margin-left: 2.5rem; }
-#orderAppraiseSuccess .success-help { background-color: #f4f4f4; text-align: center; height: 6rem; line-height: 6rem; }
+#orderAppraiseSuccess .success-help { background-color: #f4f4f4; text-align: center; height: 6rem; padding: 2rem 0; box-sizing: border-box; }
 #orderAppraiseSuccess .success-help i.icon { font-size: 2rem; height: 2rem; line-height: 2rem; color: #00b94a; margin-right: .5rem; vertical-align: top; }
 #orderAppraiseSuccess .success-help span { color: #333333; font-size: 1.65rem; height: 2rem; line-height: 2rem; }
 #orderAppraiseSuccess .Recommended-goods { background-color: white; width: 100%; height: auto; }
@@ -94,6 +94,6 @@ export default {
 #orderAppraiseSuccess .Recommended-goods .goodLists li .cover { width: 6.5rem; height: 6.5rem; border-radius: .5rem; overflow: hidden; background-color: #e6e6e6; display: inline-block; float: left; }
 #orderAppraiseSuccess .Recommended-goods .goodLists li .cover img { width: 100%; min-height: 100%; height: auto; }
 #orderAppraiseSuccess .Recommended-goods .goodLists li .desc { width: calc(100% - 6.5rem); display: inline-block; float: left; height: 6.5rem; position: relative; }
-#orderAppraiseSuccess .Recommended-goods .goodLists li .desc label { padding-left: 1rem; color: #333333; font-size: 1.4rem; line-height: 1.6rem; width: calc(100% - 7rem); overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;  }
+#orderAppraiseSuccess .Recommended-goods .goodLists li .desc label { padding-left: 1rem; color: #333333; font-size: 1.4rem; line-height: 1.8rem; width: calc(100% - 7rem); overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;  }
 #orderAppraiseSuccess .Recommended-goods .goodLists li .desc a.appraise { position: absolute; right: 0; bottom: 0; height: 2.5rem; width: 6.75rem; text-align: center; line-height: 2.5rem; border: 1px double #ff4242; color: #ff4242; font-size: 1.2rem; border-radius: .1rem; }
 </style>

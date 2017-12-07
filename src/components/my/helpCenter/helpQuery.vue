@@ -4,7 +4,7 @@
 			<div class="query-box clearfix">
 				<div class="query">
 					<i class="iconfont icon-sousuo"></i>
-					<input v-model="inputValue" type="text" placeholder="有问题？点我搜搜看吧"/>
+					<input v-model="inputValue" type="text" placeholder="有问题？点我搜搜看吧" />
 				</div>
 				<button v-if="!inputValue" @click="$router.push({name: 'helpCenter'})">取消</button>
 				<button v-else @click="queryBtn">搜索</button>
@@ -23,14 +23,28 @@
 		name: 'helpQuery',
 		data() {
 			return {
-				inputValue:'',
+				inputValue: '',
 				btnClose: true,
-				itemData:[
-					{ id:1, name:'账户设置'},
-					{ id:2, name:'名片夹使用'},
-					{ id:3, name:'名片编辑'},
-					{ id:4, name:'企业相关'},
-					{ id:5, name:'需求发布'},
+				itemData: [{
+						id: 1,
+						name: '账户设置'
+					},
+					{
+						id: 2,
+						name: '名片夹使用'
+					},
+					{
+						id: 3,
+						name: '名片编辑'
+					},
+					{
+						id: 4,
+						name: '企业相关'
+					},
+					{
+						id: 5,
+						name: '需求发布'
+					},
 				],
 				itemShow: false
 			}
@@ -39,11 +53,16 @@
 			document.title = '帮助中心';
 		},
 		methods: {
-			queryBtn(){
+			queryBtn() {
 				console.log(this.inputValue);
 			},
-			goDetails(id){
-				this.$router.push({name: 'helpDetails',query: {id: id}});
+			goDetails(id) {
+				this.$router.push({
+					name: 'helpDetails',
+					query: {
+						id: id
+					}
+				});
 			}
 		}
 	}
@@ -53,25 +72,29 @@
 	@import '../../../assets/css/itemCommon.css';
 	.content .mint-cell:after {
 		position: absolute;
-	    background-color: #E5E5E5;
-	    content: " ";
-	    right: 0;
-	    bottom: 0;
-	    left: 1.5rem;
-	    height: 0.1rem;
+		background-color: #E5E5E5;
+		content: " ";
+		right: 0;
+		bottom: 0;
+		left: 1.5rem;
+		height: 0.1rem;
 	}
+	
 	.content .query-box {
 		height: 4.16rem;
 		padding: 0.58rem 1.33rem;
 		background-color: #fff;
 		border-bottom: 1px solid #e9e9e9;
 	}
+	
 	.query-box .query {
 		float: left;
 	}
+	
 	.query-box .query i {
-		color:#999;
+		color: #999;
 	}
+	
 	.query-box .query,
 	.query-box .query input {
 		width: 90%;
@@ -83,23 +106,27 @@
 		text-align: center;
 		border-bottom: 0.1rem solid #e9e9e9;
 	}
+	
 	.query-box .query input {
 		box-sizing: border-box;
 		width: 85%;
 		text-align: left;
-		/*line-height: 2rem;*/
+		padding: 4px 0.5rem 2px;
 		border-color: #ededed;
 		vertical-align: top;
 	}
+	
 	.query-box button {
 		float: right;
 		font-size: 1.2875rem;
 		height: 3rem;
 		background-color: #fff;
 	}
+	
 	.content .ct-bd {
 		background-color: #F5F5F5;
 	}
+	
 	.content .no-item {
 		color: #999;
 		line-height: 4rem;

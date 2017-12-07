@@ -24,9 +24,9 @@ export default {
     data() {
         return {
             helpList: [
-                { id: '', path: '', name: '', text: '设置/重置登录密码' },
-                { id: '', path: '', name: '', text: '设置/重置支付密码' },
-                { id: '', path: '', name: '', text: '绑定/修改手机号' }
+                { id: '', path: '', name: 'loginPassword', text: '设置/重置登录密码' },
+                { id: '', path: '', name: 'setPayPassword', text: '设置/重置支付密码' },
+                { id: '', path: '', name: 'changePhone', text: '绑定/修改手机号' }
             ],
             bodyHeight: document.documentElement.clientHeight + 'px', // 高度
         }
@@ -80,6 +80,8 @@ export default {
 <!-- 增加 "scoped" 属性 限制 CSS 属于当前部分 -->
 <style scoped>
 .my-setting { background-color: #f4f4f4; }
-.goExitBox { width: 100%; margin-top: 1.41rem; background-color: white; text-align: center; box-sizing: border-box; height: 4em; line-height: 4em; }
-.goExitBox a { color: rgba(255,64,64,1); font-size: 1.37rem; }
+a.mint-cell:after { content: ''; display: block; width: 100%; height: 1px; background-color: #e5e5e5; }
+a.mint-cell:last-child:after { display: none; }
+.goExitBox { width: 100%; height: 4rem; line-height: 4rem; margin-top: 1.5rem; background-color: white; text-align: center; box-sizing: border-box;  }
+.goExitBox a.goEixt { color: rgba(255,64,64,1); font-size: 1.37rem; vertical-align: middle; }
 </style>

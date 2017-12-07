@@ -19,9 +19,13 @@
   					<div class="address-detailed">{{ item.address }}</div>
   				</div>
   				<div class="item-edit">
-  					<i class="iconfont icon-write"></i>
+  					<i class="iconfont icon-bianji"></i>
   				</div>
   			</div>
+  			<div class="btn-box">
+					<div class="u-btn btn-left">微信添加</div>
+					<div class="u-btn btn-right" @click="link_addAddress">+新建地址</div>
+				</div>
   		</div>
 		
   		<div class="noAddress" v-else>
@@ -33,13 +37,9 @@
   			</div>
   			<div class="btn-box">
   				<div class="u-btn btn-left">微信添加</div>
-  				<div class="u-btn btn-right" @click="link_addAddress"><i class="iconfont "></i>新建地址</div>
+  				<div class="u-btn btn-right" @click="link_addAddress">+新建地址</div>
   			</div>
   		</div>
-  		<div class="btn-box">
-				<div class="u-btn btn-left">微信添加</div>
-				<div class="u-btn btn-right" @click="link_addAddress"><i class="iconfont "></i>新建地址</div>
-			</div>
   	</div>
   </div>
 </template>
@@ -56,8 +56,8 @@ export default {
     return {
     	noAddress:false,
     	addressList: [
-	      { name: '陆亲亲', phone:'17932816721',address:'沙尖嘴铜锣湾10293号', state:0 },
-	      { name: '陆亮', phone:'111111111',address:'刘家湾烧饼5号摊', state:1 }
+	      { name: '陆亲亲', phone:'179****6721',address:'沙尖嘴铜锣湾10293号', state:0 },
+	      { name: '陆亮', phone:'111****1511',address:'刘家湾烧饼5号摊', state:1 }
 	    ],
     }
   },
@@ -74,8 +74,12 @@ export default {
 
 <style scoped>
 /* address-list */
-.address-list {
-	
+.header {
+	border-bottom: 0.1rem solid #EBEBEB; 
+}
+.content {
+	min-height: calc(100vh - 3.8rem);
+	background-color: #F5F5F5; 
 }
 .address-list .address-hd {
 	width: 100%;
@@ -99,16 +103,16 @@ export default {
 	line-height: 1.9rem;
 }
 .address-item-ct .item-name .active-icon {
-	line-height: 2rem;
+	line-height: 2.5rem;
 }
 .address-item-ct .item-name .active-icon span {
 	display: inline-block;
 	font-size: 1.1rem;
-	line-height: 1.4rem;
+	line-height: 1.5rem;
 	border:1px solid #d4282d;
 	color: #d4282d;
-	padding: 0.25rem;
-	border-radius: 0.4rem;
+	padding: 0 0.25rem;
+	border-radius: 0.2rem;
 	vertical-align: middle;
 }
 .address-item-ct .item-address {
@@ -120,7 +124,7 @@ export default {
 	line-height: 1.9rem;
 }
 .address-item-ct .item-address .address-detailed {
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	color: #999;
 	line-height: 2.5rem;
 }
@@ -131,7 +135,8 @@ export default {
 	text-align: right;
 }
 .address-item-ct .item-edit i {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
+	color: #666;
 }
 /* address-list end */
 /* NoAddress */
@@ -141,7 +146,8 @@ export default {
 .noAddress .img-wrap {
 	width: 45%;
 	height: 45%;
-	margin: 20% auto 0;
+	padding-top: 20%;
+	margin: 0 auto;
 }
 .noAddress .img-wrap img {
 	width: 100%;
@@ -160,10 +166,10 @@ export default {
 }
 .receivingAddress .content .btn-box .u-btn {
 	float: left;
-	display: inline-block;
-	width: calc((100% - 1.5rem)/2);
-	height: 3.4rem;
-	line-height:3.4rem;
+	box-sizing: border-box;
+	width: calc((100% - 2rem)/2);
+	height: 4.12rem;
+	line-height:4.12rem;
 	background-color: #fff;
 	border:0.1rem solid #666;
 	text-align: center;
@@ -171,8 +177,11 @@ export default {
 	font-size: 1.4rem;
 	margin-bottom: 2rem;
 }
+.receivingAddress .content .noAddress .btn-box .u-btn {
+	background-color: #F5F5F5;
+}
 .receivingAddress .content .btn-box .btn-left {
-	margin-right: 1rem;
+	margin-right: 2rem;
 }
 .receivingAddress .content .btn-box .btn-right {
 	color: #e93b3d;

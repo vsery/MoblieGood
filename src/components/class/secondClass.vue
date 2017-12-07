@@ -6,7 +6,9 @@
     	</div>
     	<div class="nav">
     		<div class="nav-menu">
-    			<span v-for="item in menuList" @click="handleSelect($event)">{{item.title}}</span>
+    			<div class="nav-menu-con">
+    				<span v-for="item in menuList" @click="handleSelect($event)">{{item.title}}</span>
+    			</div>
     		</div>
     		<div class="nav-con">
     			<product-list></product-list>
@@ -37,10 +39,10 @@ export default {
         		{'id':4,'title': '家具'},
      			{'id':5,'title': '装饰'},
         		{'id':6,'title': '收纳'},
-//      		{'id':7,'title': '家具'},
-//      		{'id':8,'title': '电器'},
-//      		{'id':9,'title': '鞋帽'},
-//      		{'id':10,'title': '衣服'}
+        		{'id':7,'title': '家具'},
+        		{'id':8,'title': '电器'},
+        		{'id':9,'title': '鞋帽'},
+        		{'id':10,'title': '衣服'}
         	],
         	proList: [
         		{
@@ -98,19 +100,23 @@ export default {
 	color: #333;
 	font-size: 1.3rem;
 	border-bottom: 0.1rem solid #ebebeb;
-	overflow-x: auto;
 	white-space: nowrap;
-	/*overflow-y: hidden;*/
+	overflow: hidden;
 }
-.nav-menu > span {
-	/*float: left;*/
+.nav-menu .nav-menu-con {
+	width: 100%;
+	height: 4.0rem;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+.nav-menu .nav-menu-con > span {
 	display: inline-block;
 	height: 3.5rem;
 	line-height: 3.5rem;
 	padding: 0 0.6rem;
 	margin-left: 1.3rem;
 }
-.nav-menu > span.active {
+.nav-menu .nav-menu-con > span.active {
 	height: 3.3rem;
 	border-bottom: 0.2rem solid #d4282d;
 	color: #d4282d;

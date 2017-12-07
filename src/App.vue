@@ -11,6 +11,7 @@ export default {
 	    this.$nextTick(function() {
 	    	//禁止复制
 	    	document.body.onselectstart=document.body.oncontextmenu=function(){return false;};
+	    	document.title = this.title;
 	    });
 	},
 }

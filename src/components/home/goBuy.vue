@@ -6,7 +6,7 @@
     	</div>
     	<div class="nav">
     		<div class="line"></div>
-    		<div class="address">
+    		<div class="address" @click="$router.push('/receivingAddress')">
     			<h3>
     				<span>{{username}}</span>
     				<span>{{mobile}}</span>
@@ -58,17 +58,30 @@
     	</div>
     	<div class="btm">
     		<span>应付：￥66.00</span>
-    		<button @click="handleBuy">去付款</button>
+    		<button @click="popupVisible = true">去付款</button>
     	</div>
+    	
+    	<!-- 支付密码框 -->
+    	<div class="pop" v-if="popupVisible">
+	    	<mt-popup v-model="popupVisible" popup-transition="popup-fade">
+	    		<div class="close-pop"><span @click="closePop">×</span></div>
+	    		<h2>请输入支付密码</h2>
+	    		<h3>请输入6位数数字支付密码</h3>
+	    		<pwd-input @result="getPwd"></pwd-input>
+	    		<p><span @click="$router.push('/forgetPwd')">忘记密码？</span></p>
+			</mt-popup>
+		</div>
     </div>
 </template>
 <script>
-import headerBar from '@/components/header/headerBar'	
+import headerBar from '@/components/header/headerBar'
+import pwdInput from '@/components/tool/pwdInput'
 
 export default {
     name: 'goBuy', 
     components: {
-	  	'header-bar': headerBar
+	  	'header-bar': headerBar,
+	  	'pwd-input': pwdInput
 	},
     data() {
         return {
@@ -77,6 +90,7 @@ export default {
         	address: '湖南省长沙是天心区中欣国际',
         	deductible: 'valueF',
         	options: {label: '可抵扣'},
+        	popupVisible: true,
         }
     },
     mounted() {
@@ -85,10 +99,21 @@ export default {
         });
     },
     methods: {
+    	//关闭弹框
+    	closePop: function() {
+    		this.popupVisible = false;
+    	},
+    	//获取从子组件传来的密码值
+    	getPwd: function(val) {
+			var that = this;
+			setTimeout(function() {
+				that.handleBuy();
+			}, 1000);
+    	},
     	//去付款
     	handleBuy: function() {
     		this.$router.push('/buySuccess');
-    	}
+    	},
     }
 }
 
@@ -137,7 +162,7 @@ export default {
 }
 .address > p > span:last-child {
 	position: absolute;
-	left: 7.4rem;
+	left: 8.2rem;
 	top: -0.2rem;
 	display: inline-block;
 	width: 16.0rem;
@@ -233,5 +258,33 @@ export default {
 	background: #e93b3d;
 	color: #fff;
 	font-size: 1.5rem;
+}
+.mint-popup {
+	width: 28rem;
+	height: 20.6rem;
+	text-align: center;
+	border-radius: 0.5rem;
+	padding: 2.0rem;
+}
+.close-pop {
+	font-size: 2.4rem;
+	text-align: right;
+	color: #333;
+}
+.pop h2 {
+	color: #333;
+	font-size: 1.6rem;
+	margin-bottom: 1.5rem;
+}
+.pop h3 {
+	color: #999;
+	font-size: 1.4rem;
+	margin-bottom: 2.8rem;
+}
+.pop p {
+	text-align: center;
+	color: #305694;
+	font-size: 1.3rem;
+	margin-top: 4.1rem;
 }
 </style>

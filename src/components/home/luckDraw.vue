@@ -150,7 +150,8 @@ export default {
     					this.winFlag = true;
     					this.winText = '恭喜您获得' + drawLiText;
     				} else {
-    					this.winText = false;
+    					this.winText = '很遗憾，没有中奖';
+    					this.winFlag = false;
     				}
     				this.clickFlag = false;
     				this.intervalTime = INTERVAL_TIME;//间隔时间

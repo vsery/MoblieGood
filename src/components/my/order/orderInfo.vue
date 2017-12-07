@@ -17,7 +17,7 @@
                     <div class="order-received" v-if="logisticsView" @click="eveReceived(order)">
                         <div class="cover"><i class="icon iconfont icon-daishouhuo"></i></div>
                         <div class="description" v-if="logistics.state=='end'">
-                            <div class="state">卖家发货</div>
+                            <div class="state on">卖家发货</div>
                             <div class="createTime">{{logistics.createTime}}</div>
                         </div>
                         <div class="description" v-else>
@@ -57,6 +57,9 @@
                     <div class="order-system" v-if="order.state=='appraise'">
                         <a href="javascript:;" @click="afterSales(order)" class="order button appraise">申请售后</a>
                         <a href="javascript:;" @click="goAppraise(order)" class="order button active appraise">立即评价</a>
+                    </div>
+                    <div class="order-system" v-if="order.state=='complete'">
+                        <a href="javascript:;" @click="afterSales(order)" class="order button appraise">申请售后</a>
                     </div>
                 </div>
                 <ul class="order-item">
@@ -301,7 +304,7 @@ export default {
 </script>
 <style scoped>
 #orderInfo { background-color: #f4f4f4; }
-#orderInfo .order-state-box { width: 100%; height: 8.75rem; overflow: hidden; background-image: -webkit-linear-gradient(to right, #ff5d42, #ff4242); background-image: linear-gradient(to right, #ff5d42, #ff4242); }
+#orderInfo .order-state-box { width: 100%; height: 8.75rem; overflow: hidden; background-image: -webkit-linear-gradient(left, #ff5d42, #ff4242); background-image: -o-linear-gradient(left, #ff5d42, #ff4242); background-image: linear-gradient(to right, #ff5d42, #ff4242); }
 #orderInfo .order-state-box .state-help { margin-top: 2.85rem; margin-left: 3.5rem; color: white; font-size: 1.4rem; display: inline-block; }
 #orderInfo .order-state-box .state-help-text { margin-top: .75rem; margin-left: 3.5rem; color: white; font-size: 1.2rem; display: block; }
 #orderInfo .order-state-box .icon.state { display: inline-block; float: right; width: 6.75rem; height: 6.75rem; overflow: hidden; margin-right: 4.5rem; margin-top: 1rem; }
@@ -311,10 +314,11 @@ export default {
 #orderInfo .order-box .order-received { min-height: 6rem; border-bottom: 1px double #e5e5e5; }
 #orderInfo .order-box .order-received .cover,
 #orderInfo .order-box .order-received .description { display: inline-block; vertical-align: top; }
-#orderInfo .order-box .order-received .cover { width: 2.5rem; height: 100%; line-height: 6rem; text-align: right; -webkit-transform: rotateY(180deg); -ms-transform: rotateY(180deg); -o-transform: rotateY(180deg); transform: rotateY(180deg); }
+#orderInfo .order-box .order-received .cover { display: inline-block; width: 2.5rem; height: 6rem; line-height: 6rem; text-align: right; -webkit-transform: rotateY(180deg); -ms-transform: rotateY(180deg); -o-transform: rotateY(180deg); transform: rotateY(180deg); }
 #orderInfo .order-box .order-received .cover i { font-size: 2rem; }
 #orderInfo .order-box .order-received .cover i,
 #orderInfo .order-box .order-received .description .state { color: #00b94a; }
+#orderInfo .order-box .order-received .description .state.on { margin-top: 1.4rem; }
 #orderInfo .order-box .order-received .description { width: calc(100% - 2.8rem); }
 #orderInfo .order-box .order-received .description .state { font-size: 1.2rem; line-height: 1.4rem; margin: 1rem auto .5rem; }
 #orderInfo .order-box .order-received .description .createTime { font-size: 1.2rem; color: #999999; }
@@ -333,36 +337,37 @@ export default {
 #orderInfo .order-box .order-title { width: 100%; height: 3.75rem; line-height: 3.75rem; border-bottom: 1px double #e5e5e5; }
 #orderInfo .order-box .order-title .shop { display: inline-block; }
 #orderInfo .order-box .order-title .shop i.icon { color: #b5b4b7; font-size: 2rem; margin-right: .5rem; vertical-align: middle; }
-#orderInfo .order-box .order-title .shop span.name { color: #b5b4b7; color: #333333; font-size: 1.19rem; }
+#orderInfo .order-box .order-title .shop span.name { vertical-align: middle; color: #b5b4b7; color: #333333; font-size: 1.19rem; }
 #orderInfo .order-box .order-info { min-height: 9.85rem; width: 100%; border-bottom: 1px dotted #dbdbdb; padding: 1rem 0; }
 #orderInfo .order-box .order-info .order-cover { display: inline-block; width: 6.65rem; height: 6.65rem; overflow: hidden; box-sizing: border-box; float: left; }
 #orderInfo .order-box .order-info .order-cover img { width: 100%; min-height: 100%; height: auto; }
 #orderInfo .order-box .order-info .order-describe { display: inline-block; width: calc(100% - 10rem); vertical-align: top; padding: 0 .5rem; box-sizing: border-box; float: left; }
-
 #orderInfo .order-box .order-info .order-describe .order-name { color: #333333; font-size: 1.2rem; line-height: 1.4rem; overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 #orderInfo .order-box .order-info .order-describe .order-desc { font-size: 1rem; color: #999999; margin-top: .5rem; }
-#orderInfo .order-box .order-info .order-describe .order-help { margin-top: .5rem; min-height: 1.67rem; }
-#orderInfo .order-box .order-info .order-describe .order-help span.key { vertical-align: middle; font-size: .9rem; color: #ff9000; border: 1px double #ff9000; padding: .35rem .25rem .15rem .25rem; margin-right: .75rem; display: inline-block; margin-bottom: .5rem; }
-
+#orderInfo .order-box .order-info .order-describe .order-help { margin-top: .75rem; min-height: 1.67rem; }
+#orderInfo .order-box .order-info .order-describe .order-help span.key { vertical-align: middle; font-size: .9rem; color: #ff9000; border: .1px double #ff9000; padding: .35rem .25rem .15rem .25rem; margin-right: .75rem; display: inline-block; margin-bottom: .5rem; border-radius: .25rem; }
 #orderInfo .order-box .order-info .order-price-box { display: inline-block; width: 3.35rem; vertical-align: top; box-sizing: border-box; float: left; }
 #orderInfo .order-box .order-info .order-price-box .order-price { width: 100%; text-align: right; color: #333333; font-size: 1.2rem; line-height: 1.4rem; }
-#orderInfo .order-box .order-info .order-price-box .order-price-old { width: 100%; text-align: right; color: #999999; font-size: 1.2rem; line-height: 1.4rem; }
+#orderInfo .order-box .order-info .order-price-box .order-price-old { text-decoration: line-through; width: 100%; text-align: right; color: #999999; font-size: 1.2rem; line-height: 1.4rem; }
 #orderInfo .order-box .order-info .order-price-box .order-number { width: 100%; text-align: right; color: #999999; font-size: 1rem; line-height: 2.4rem; }
 #orderInfo .order-box .order-item { width: 100%; }
 #orderInfo .order-box .order-item .item { width: 100%; }
+#orderInfo .order-box .order-item .item:first-child { margin-top: .7rem; }
 #orderInfo .order-box .order-item .line { width: 100%; height: 1px; border-bottom: 1px dotted #dbdbdb; }
 #orderInfo .order-box .order-item .item:after { content: ''; clear: both; display: block; }
 #orderInfo .order-box .order-item .item span { font-size: 1.1rem; display: inline-block; line-height: 2rem; }
 #orderInfo .order-box .order-item .item span.title { color: #999999; width: calc(100% - 12.5rem); float: left; }
 #orderInfo .order-box .order-item .item span.val { color: #999999; width: 12rem; text-align: right; float: right; }
 #orderInfo .order-box .order-item .item span.strong { color: #333333; padding-bottom: .7rem; }
+#orderInfo .order-box .order-item .item span.strong.val { font-size: 1.2rem; font-weight: 500;  }
 #orderInfo .order-box .order-item .item span.active { color: #ff4242; padding: .75rem 0; }
+#orderInfo .order-box .order-item .item span.active.val { font-size: 1.2rem; font-weight: 500; }
 #orderInfo .order-box .order-Give { width: 100%; }
-#orderInfo .order-box .order-Give .content { height: 4rem; line-height: 4rem; border-bottom: 1px double #ddd; }
-#orderInfo .order-box .order-Give .content label.key { border: 1px double #ff9000; color: #ff9000; padding: .35rem .25rem .15rem .25rem; margin-right: 1rem; font-size: .9rem; }
-#orderInfo .order-box .order-Give .content strong { color: #333333; font-size: 1.2rem; letter-spacing: .05rem; font-weight: 500; }
+#orderInfo .order-box .order-Give .content { height: 4rem; line-height: 4rem; border-bottom: .1px double #ddd; }
+#orderInfo .order-box .order-Give .content label.key { height: 1rem; line-height: 1.2rem; vertical-align: middle; font-size: .9rem; color: #ff9000; border: .1px double #ff9000; padding: .35rem .25rem .25rem .35rem; margin-right: .75rem; display: inline-block; border-radius: .25rem; }
+#orderInfo .order-box .order-Give .content strong { color: #333333; font-size: 1.2rem; letter-spacing: .05rem; vertical-align: middle; }
 #orderInfo .order-box .order-Give .content strong span.key { color: #ff4242; }
-#orderInfo .order-box .order-Give ul.description { border-bottom: 1px double #ddd; }
+#orderInfo .order-box .order-Give ul.description { border-bottom: .1px double #ddd; padding: .5rem 0; }
 #orderInfo .order-box .order-Give ul.description:after { content: ''; clear: both; display: block; }
 #orderInfo .order-box .order-Give ul.description li { float: left; width: 100%; height: 2rem; line-height: 2rem; }
 #orderInfo .order-box .order-Give ul.description li label.item { display: inline-block; color: #999999; font-size: 1.1rem; }
@@ -370,7 +375,7 @@ export default {
 #orderInfo .order-box .order-system { display: block; padding: 1.25rem 0; text-align: right; }
 #orderInfo .order-box .order-info .order-system { padding-bottom: 0; float: left; width: 100%; }
 #orderInfo .order-box .order-info:after{ content: ''; clear: both; display: block; }
-#orderInfo .order-box .order-system a.order.button { font-size: 1.19rem; display: inline-block; height: 2.5rem; line-height: 2.5rem; border: 1px double #939393; padding: 0 1rem; border-radius: .25rem; font-weight: 100; }
+#orderInfo .order-box .order-system a.order.button { font-weight: 300; font-size: 1.19rem; display: inline-block; height: 2.5rem; line-height: 2.5rem; border: .1px double #333; color: #333; padding: 0 1rem; border-radius: .25rem; }
 #orderInfo .order-box .order-system a.order.button.active { color: #ff4242; border-color: #ff4242; }
 #orderInfo .order-box .order-system a.order.button~a.order.button { margin-left: .75rem; }
 </style>

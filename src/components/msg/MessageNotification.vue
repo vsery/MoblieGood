@@ -64,12 +64,12 @@
 				margin-bottom: 2.5rem;
 			}
 			.line{
-				height: 2px;
+				height: 0.1rem;
 				width: 37.5rem;
 				background: #ebebeb;
-				position: absolute;
-				left: -1.5rem;
-				bottom: 0;
+				position: fixed;
+				left: 0;
+				top: 3.7rem;
 			}
 			/*通知消息start*/
 			#MessageNotification{
@@ -110,7 +110,7 @@
 			#MessageNotification .notification_box_content a h2{
 				font-size: 1.6rem;
 				color:#333;
-				font-weight: bold;
+				font-weight: normal;
 				padding-bottom: 0.5rem;
 				
 			}
@@ -129,7 +129,7 @@
 			}
 			#MessageNotification .notification_box_content_nav h4{
 				font-size: 1.4rem;
-				font-weight: bold;
+				font-weight: normal;
 				margin-bottom: 0.8rem;
 			}
 			#MessageNotification .notification_box_content_nav p{
